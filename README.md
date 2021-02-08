@@ -37,10 +37,10 @@ Users will be able to:
     
   - Day 4
     - Add ability for user to adjust speed of algorithm, randomly generate walls, and resetting the graph
+    - Implement tutorial modal
     
   - Day 5
     - Continue styling, bug fixes 
-    - Implement tutorial modal
     
 ## Bonus Features
   - Timer for algorithm runtime
