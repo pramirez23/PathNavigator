@@ -40,6 +40,7 @@ Users will be able to:
     
   - Day 5
     - Continue styling, bug fixes 
+    - Implement tutorial modal
     
 ## Bonus Features
   - Timer for algorithm runtime
