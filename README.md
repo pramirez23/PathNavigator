@@ -21,5 +21,26 @@ Users will be able to:
   - CSS
   - JavaScript
 
+## Implementation Timeline
+  - Day 1
+    - Research pathfinding algorithms, how to make graph area
+    - Create graph object
+  
+  - Day 2
+    - Implement algorithms 
+    - Add ability to "draw" on graph
+    - Create node objects
+    
+  - Day 3
+    - Attach node objects to graph
+    - Style graph and animations for each step of pathfinding algorithm
+    
+  - Day 4
+    - Add ability for user to adjust speed of algorithm, randomly generate walls, and resetting the graph
+    - Implement tutorial modal
+    
+  - Day 5
+    - Continue styling, bug fixes 
+    
 ## Bonus Features
   - Timer for algorithm runtime
