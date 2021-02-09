@@ -1,0 +1,44 @@
+header {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  width: 100vw;
+  justify-content: center;
+  background-color: #424242;
+  color: white;
+  font-size: 45px;
+  font-weight: 700;
+  padding-top: 10px;
+
+  .header-logo {
+    transition: 0.3s;
+    cursor: default;
+    align-items: center;
+    &:hover {
+      color: rgb(206, 206, 206);
+    }
+  }
+}
+
+.contact-links-container {
+  position: absolute;
+  right: 10px;
+  font-size: 30px;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 9px;
+    width: 200px;
+
+    a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+      &:hover {
+        color: rgb(206, 206, 206);
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+#grid {
+  display: flex;
+  flex-wrap: wrap;
+  height: 780px;
+  width: 1300px;
+  border: 10px black	#A9A9A9;
+}
+
+.node-legend-container {
+  font-size: 20px;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 600px;
+  } 
+}

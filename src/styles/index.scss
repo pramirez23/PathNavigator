@@ -1,0 +1,12 @@
+@import "./reset.scss";
+@import "./header.scss";
+@import "./nav.scss";
+@import "./board.scss";
+@import "./tile.scss";
+@import "./media_queries.scss";
+
+main {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
