@@ -1,4 +1,4 @@
-export default class Node {
+ export default class Node {
   constructor(board, pos, type) {
     this.tile = document.getElementById(`${pos[0]}-${pos[1]}`);
     this.board = board;
@@ -36,13 +36,6 @@ export default class Node {
 
   generateTree() {
     // Create relationships between nodes on board
-    const moves = [
-      [1, 0],
-      [0, 1],
-      [-1, 0],
-      [0, -1]
-    ];
-
     // Using queue to evaluate each node individually
     let nodeQueue = [this];
 
@@ -52,12 +45,12 @@ export default class Node {
     while (!!nodeQueue.length) {
       let node = nodeQueue.shift(); 
 
-      moves.forEach(move => {
+      Node.MOVES.forEach(move => {
         let dx = move[0];
         let dy = move[1];
 
         let nextPos = [node.pos[0] + dx, node.pos[1] + dy];
-        
+
         let nextPosX = nextPos[0];
         let nextPosY = nextPos[1];
         
@@ -135,3 +128,10 @@ export default class Node {
     }
   }
 }
+
+Node.MOVES = [
+  [1, 0],
+  [0, 1],
+  [-1, 0],
+  [0, -1]
+]
