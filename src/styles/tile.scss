@@ -1,9 +1,9 @@
 .tile {
   height: 25px;
   width: 25px;
-  background-color: #cecece;
-  border-bottom: 1px solid rgb(155, 155, 155);
-  border-right: 1px solid rgb(155, 155, 155);
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #b6b6b6;
+  border-right: 1px solid #b6b6b6;
 }
 
 .root {
@@ -15,7 +15,7 @@
 }
 
 .searched {
-  animation: 1s ease both searchTile;
+  animation: 1.0s ease both searchTile;
 }
 
 .path {
@@ -45,7 +45,7 @@
   }
 
   to {
-    background-color: rgb(255, 225, 0);
+    background-color: #ffd369;;
     transform: scale(1.0);
   }
 }

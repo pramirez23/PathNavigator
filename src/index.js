@@ -3,7 +3,7 @@ import Board from "./board";
 
 document.addEventListener("DOMContentLoaded", () => {
   let board = new Board();
-  const startButton = document.getElementById("start");
+  const startButton = document.getElementById("start-button");
   startButton.addEventListener("click", executeBfs)
 
   function executeBfs() {

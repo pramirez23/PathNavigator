@@ -20,6 +20,17 @@
     <div class="header-logo">
       <h1><i class="fas fa-route"></i> PathNavigator</h1>
     </div>
+    
+    <div class="node-legend-container">
+      <ul class="node-legend">
+        <li><i id="root-legend"class="fas fa-square-full"></i> Root Node</li>
+        <li><i id="target-legend" class="fas fa-square-full"></i> Target Node</li>
+        <li><i id="unsearched-legend" class="fas fa-square-full"></i> Unsearched Node</li>
+        <li><i id="searched-legend" class="fas fa-square-full"></i> Searched Node</li>
+        <li><i id="wall-legend" class="fas fa-square-full"></i> Wall Node</li>
+        <li><i id="path-legend" class="fas fa-square-full"></i> Path Node</li>
+      </ul>
+    </div>
 
     <div class="contact-links-container">
       <ul class="links">
@@ -44,28 +55,19 @@
     </div>
   </header>
 
-  
   <main>
-    <nav>
-      <div class="nav-bar-container">
-        <button id="start">Start</button>
-      </div>
-    </nav>
-
     <div class="grid-container">
-      <div class="node-legend-container">
-        <ul class="node-legend">
-          <li><i id="root-legend"class="fas fa-square-full"></i> Root Node</li>
-          <li><i id="target-legend" class="fas fa-square-full"></i> Target Node</li>
-          <li><i id="unsearched-legend" class="fas fa-square-full"></i> Unsearched Node</li>
-          <li><i id="searched-legend" class="fas fa-square-full"></i> Searched Node</li>
-          <li><i id="wall-legend" class="fas fa-square-full"></i> Wall Node</li>
-          <li><i id="path-legend" class="fas fa-square-full"></i> Path Node</li>
-        </ul>
-      </div>
       <div id="grid"></div>
     </div>
+
+    <nav>
+      <div class="nav-bar-container">
+        <button id="start-button">START</button>
+      </div>
+    </nav>
   </main>
+
+
 </body>
 
 </html>

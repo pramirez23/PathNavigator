@@ -4,16 +4,7 @@
   height: 700px;
   width: 1300px;
   border: 10px #A9A9A9;
-  background: #CECECE;
-}
-
-.node-legend-container {
-  font-size: 20px;
-
-  ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 600px;
-  } 
+  background: #f7f7f7;
+  -webkit-box-shadow: 0px 0px 25px 6px #595959; 
+  box-shadow: 0px 0px 25px 3px #595959;
 }

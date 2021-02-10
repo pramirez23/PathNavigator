@@ -1,9 +1,36 @@
+button:focus {
+  outline: none;
+}
+
 nav {
   .nav-bar-container {
-    background: rgba(66, 66, 66, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #393e46;
     border-radius: 15px;
-    margin-top: 50px;
-    width: 300px;
-    height: 70vh;
+    width: 1300px;
+    height: 125px;
+    margin-top: 25px;
+    -webkit-box-shadow: 0px 0px 25px 6px #595959; 
+    box-shadow: 0px 0px 25px 3px #595959;
+  }
+}
+
+#start-button { 
+  background-color: #1B8000;
+  color: white;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: bold;
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+  transition: 0.25s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #26ae01;
   }
 }
