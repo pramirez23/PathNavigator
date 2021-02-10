@@ -9,10 +9,9 @@ export default class Node {
     this.parent = null;
     this.children = [];
 
-    this.visitedTiles = [];
-    this.path = [];
-    // this.visitedNodes = new Set();
-    // this.visitedNodes.add(this.pos.join("-"));
+    this.searchedTiles = [];
+    // this.searchedNodes = new Set();
+    // this.searchedNodes.add(this.pos.join("-"));
   }
 
   addParent(node) {
@@ -30,7 +29,7 @@ export default class Node {
   }
 
   generateTree() {
-    // Assign parents to nodes on board
+    // Create relationships between nodes on board
     const moves = [
       [1, 0],
       [0, 1],
@@ -38,16 +37,14 @@ export default class Node {
       [0, -1]
     ];
 
-    let tree = [this];
-    let visited = new Set();
-    visited.add(this.pos.join("-"));
+    // Using queue to evaluate each node individually
+    let nodeQueue = [this];
 
-    while (!!tree.length) {
-      let node = tree.shift(); 
+    let searched = new Set();
+    searched.add(this.pos.join("-"));
 
-      if (node.type === "target") {
-        break
-      }
+    while (!!nodeQueue.length) {
+      let node = nodeQueue.shift(); 
 
       moves.forEach(move => {
         let dx = move[0];
@@ -60,48 +57,88 @@ export default class Node {
         if (node.board.validMove(nextPos)) {
           let neighbor = this.grid[nextPosX][nextPosY].node
 
-          if (visited.has(nextPos.join("-"))) {
+          if (searched.has(`${nextPosX}-${nextPosY}`)) {
             return;
           }
 
-          visited.add(nextPos.join("-"));
+          searched.add(nextPos.join("-"));
           neighbor.addParent(node);
-          tree.push(neighbor);
+          nodeQueue.push(neighbor);
         }
       })
     }
-
-    console.log(visited)
   }
 
-  fetchAllNodes(grid) {
-    const nodes = [];
-    for (let row of grid) {
-      for (const node of row) 
-      nodes.push(node)
-    }
-    return nodes;
-  }
+  // fetchAllNodes(grid) {
+  //   const nodes = [];
+  //   for (let row of grid) {
+  //     for (const node of row) 
+  //     nodes.push(node)
+  //   }
+  //   return nodes;
+  // }
 
   tracePath() {
+    let path = []
     let node = this.board.target;
-
     while (node.type !== "root" && node.parent.type !== "root") {
-      this.path.unshift(node.parent.pos)
+      // Tracing path back by adding parent's position to front of path array
+      // eventually will reach root node
+      path.unshift(node.parent.pos)
       node = node.parent;
     }
+    return path;
   }
 
   bfs() {
     let queue = [this];
-    let visited = new Set();
+    let searched = [];
     
     while (queue.length > 0) {
       let node = queue.shift();
 
-      if (node.type === "target") return node;
+      if (node.type === "target") {
+        let path = this.tracePath();
+        this.visualizeSearch(this.grid, searched, path);
+        return;
+      } else if (!["root", "target"].includes(node.type)) {
+        searched.push(node.pos)
+      }
       queue.push(...node.children)
     }
+  }
 
+  visualizeSearch(grid, searched, path) {
+    let offset = 0
+    let searchComplete = false
+
+    while (searched.length > 0) {
+      let pos = searched.shift();
+      let tile = grid[pos[0]][pos[1]].tile;
+      setTimeout(() => {
+        tile.classList.add("searched")
+      }, 100 + offset);
+      offset += 3;
+    }
+
+    searched.length === 0 ? searchComplete = true : "";
+
+    if (searchComplete) {
+      this.visualizePath(path, grid);
+    }
+  }
+
+  visualizePath(path, grid) {
+    let offset = 0
+
+    while (path.length > 0) {
+      let pos = path.shift();
+      let tile = grid[pos[0]][pos[1]].tile;
+      setTimeout(() => {
+        tile.classList.remove("searched")
+        tile.classList.add("path")
+      }, 300 + offset);
+      offset += 100;
+    }
   }
 }

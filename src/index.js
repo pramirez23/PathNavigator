@@ -8,10 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function executeBfs() {
     let root = board.root;
-    console.log(board.root)
+    // console.log(board.root)
     // Generate relationships between all tiles (set parents and children)
     root.generateTree();
-    // Traverse the tree using bfs
-    root.bfs("target");
+    // Traverse the tree to find target node using bfs
+    root.bfs();
+    console.log(root)
   }
 })

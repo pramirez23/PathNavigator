@@ -3,11 +3,10 @@ import Tile from "./tile";
 export default class Board {
   constructor() {
     this.grid = [];
-    this.generateGrid();
-
     this.root;
     this.target;
     
+    this.generateGrid();
     this.validMove = this.validMove.bind(this);
   }
 
