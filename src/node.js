@@ -1,17 +1,12 @@
 export default class Node {
   constructor(board, pos, type) {
+    this.tile = document.getElementById(`${pos[0]}-${pos[1]}`);
     this.board = board;
+    this.grid = board.grid;
     this.pos = pos;
     this.type = type;
-    this.grid = board.grid;
-    
-    this.tile = document.getElementById(`${pos[0]}-${pos[1]}`);
     this.parent = null;
     this.children = [];
-
-    this.searchedTiles = [];
-    // this.searchedNodes = new Set();
-    // this.searchedNodes.add(this.pos.join("-"));
   }
 
   addParent(node) {
@@ -26,6 +21,17 @@ export default class Node {
       this.parent = node;
       node.children.push(this)
     }
+  }
+  
+  tracePath() {
+    let path = [];
+    let node = this.board.target;
+    while (node.type !== "root" && node.parent.type !== "root") {
+      // Tracing path back by adding parent's position to front of path array
+      path.unshift(node.parent.pos);
+      node = node.parent;
+    }
+    return path;
   }
 
   generateTree() {
@@ -51,6 +57,7 @@ export default class Node {
         let dy = move[1];
 
         let nextPos = [node.pos[0] + dx, node.pos[1] + dy];
+        
         let nextPosX = nextPos[0];
         let nextPosY = nextPos[1];
         
@@ -77,18 +84,6 @@ export default class Node {
   //   }
   //   return nodes;
   // }
-
-  tracePath() {
-    let path = [];
-    let node = this.board.target;
-    while (node.type !== "root" && node.parent.type !== "root") {
-      // Tracing path back by adding parent's position to front of path array
-      // eventually will reach root node
-      path.unshift(node.parent.pos);
-      node = node.parent;
-    }
-    return path;
-  }
 
   bfs() {
     let queue = [this];

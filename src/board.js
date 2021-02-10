@@ -5,7 +5,6 @@ export default class Board {
     this.grid = [];
     this.root;
     this.target;
-    
     this.generateGrid();
     this.validMove = this.validMove.bind(this);
   }
