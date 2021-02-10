@@ -79,12 +79,12 @@ export default class Node {
   // }
 
   tracePath() {
-    let path = []
+    let path = [];
     let node = this.board.target;
     while (node.type !== "root" && node.parent.type !== "root") {
       // Tracing path back by adding parent's position to front of path array
       // eventually will reach root node
-      path.unshift(node.parent.pos)
+      path.unshift(node.parent.pos);
       node = node.parent;
     }
     return path;
@@ -100,45 +100,43 @@ export default class Node {
       if (node.type === "target") {
         let path = this.tracePath();
         this.visualizeSearch(this.grid, searched, path);
-        return;
       } else if (!["root", "target"].includes(node.type)) {
-        searched.push(node.pos)
+        searched.push(node.pos);
       }
-      queue.push(...node.children)
+      queue.push(...node.children);
     }
   }
 
   visualizeSearch(grid, searched, path) {
-    let offset = 0
-    let searchComplete = false
-
-    while (searched.length > 0) {
+    let offset = 0;
+    
+    while (searched.length > 0) {      
       let pos = searched.shift();
       let tile = grid[pos[0]][pos[1]].tile;
+
       setTimeout(() => {
         tile.classList.add("searched")
-      }, 100 + offset);
-      offset += 3;
+      }, 5 + offset);
+      offset += 10;
     }
 
-    searched.length === 0 ? searchComplete = true : "";
-
-    if (searchComplete) {
+    if (searched.length === 0) {
       this.visualizePath(path, grid);
     }
   }
 
   visualizePath(path, grid) {
-    let offset = 0
+    let offset = 0;
 
     while (path.length > 0) {
       let pos = path.shift();
       let tile = grid[pos[0]][pos[1]].tile;
+
       setTimeout(() => {
-        tile.classList.remove("searched")
-        tile.classList.add("path")
-      }, 300 + offset);
-      offset += 100;
+        tile.classList.remove("searched");
+        tile.classList.add("path");
+      }, 9500 + offset);
+      offset += 10;
     }
   }
 }
