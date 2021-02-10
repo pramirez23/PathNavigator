@@ -9,16 +9,17 @@ export default class Node {
     this.parent = null;
     this.children = [];
 
-    this.isVisited = false;
+    this.visitedTiles = [];
     this.path = [];
-
-    this.visitedNodes = new Set();
-    this.visitedNodes.add(this.pos.join("-"));
+    // this.visitedNodes = new Set();
+    // this.visitedNodes.add(this.pos.join("-"));
   }
 
   addParent(node) {
     if (!!this.parent) {
+      // If there's a parent, grab index of child node in parent's array
       let childIdx = this.parent.children.indexOf(this);
+      // Remove node from parent's array of children
       this.parent.children.splice(childIdx, 1);
     }
 
@@ -29,14 +30,17 @@ export default class Node {
   }
 
   generateTree() {
+    // Assign parents to nodes on board
     const moves = [
       [1, 0],
       [0, 1],
-      [-1, 0]
-      [0, -1],
+      [-1, 0],
+      [0, -1]
     ];
 
     let tree = [this];
+    let visited = new Set();
+    visited.add(this.pos.join("-"));
 
     while (!!tree.length) {
       let node = tree.shift(); 
@@ -50,19 +54,24 @@ export default class Node {
         let dy = move[1];
 
         let nextPos = [node.pos[0] + dx, node.pos[1] + dy];
-        let nextPosX = nextPost[0];
-        let nextPosY = nextPost[1];
+        let nextPosX = nextPos[0];
+        let nextPosY = nextPos[1];
         
-        if (node.board.validPos(newPos)) {
+        if (node.board.validMove(nextPos)) {
           let neighbor = this.grid[nextPosX][nextPosY].node
 
-          this.visitedNodes.add(nextPos.join("-"));
-          neighbor.addParent(this);
+          if (visited.has(nextPos.join("-"))) {
+            return;
+          }
+
+          visited.add(nextPos.join("-"));
+          neighbor.addParent(node);
           tree.push(neighbor);
         }
       })
-
     }
+
+    console.log(visited)
   }
 
   fetchAllNodes(grid) {
@@ -83,19 +92,16 @@ export default class Node {
     }
   }
 
-  // bfs() {
-  //   let queue = [this];
-  //   let visited = new Set();
+  bfs() {
+    let queue = [this];
+    let visited = new Set();
     
-  //   while (queue.length > 0) {
-  //     let node = queue.shift();
+    while (queue.length > 0) {
+      let node = queue.shift();
 
-  //     if (node.type !== "root") {
-  //       this.
-  //     }
-  //     if (node.type === "target") return node;
-  //     queue.push(...node.children)
-  //   }
+      if (node.type === "target") return node;
+      queue.push(...node.children)
+    }
 
-  // }
+  }
 }
