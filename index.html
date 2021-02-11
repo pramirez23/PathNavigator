@@ -67,13 +67,19 @@
           <span>An unweighted pathfinding algorithm that explores all of the root node's direct neighbors before moving onto the next level of neighbors. This approach guarantees discovery of the shortest path to the target node.</span>
         </div>
         
-        <div class="dropdown">
-          <select id="algo-dropdown">
-            <option value="prompt">Select an algorithm:</option>
-            <option value="bfs">Breadth-First Search (BFS)</option>
-            <option value="dfs">Depth-First Search (DFS)</option>
-            <option value="dijkstra">Dijkstra's Algorithm</option>
-          </select>
+        <div class="controls-container">
+          <div class="dropdown">
+            <select id="algo-dropdown">
+              <option value="prompt">Select an algorithm:</option>
+              <option value="bfs">Breadth-First Search (BFS)</option>
+              <option value="dfs">Depth-First Search (DFS)</option>
+              <option value="dijkstra">Dijkstra's Algorithm</option>
+            </select>
+          </div>
+  
+          <div class="speed-slider-container">
+            <p>Speed</p> <input class="slider" id="speed-slider" type="range" min="1" max="75" step="5" value="35">
+          </div>
         </div>
 
         <div class="visualization-buttons-container">

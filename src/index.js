@@ -24,27 +24,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function startAlgorithm() {
-    if (board.algorithmRunning === true) return;
+    if (board.algorithmStarted === true) return;
     reset();
     switch (selectedAlgorithm) {
       case "bfs":
-        board.algorithmRunning = true;
+        board.algorithmStarted = true;
         // Generate relationships between all tiles (set parents and children)
         root.generateTree();
         // Traverse the tree to find target node using bfs
         root.bfs();
         break;
       case "dfs":
-        board.algorithmRunning = true;
+        board.algorithmStarted = true;
         root.generateTree();
         root.dfs();
         break;
       // case "dijkstra":
-      //   board.algorithmRunning = true;
+      //   board.algorithmStarted = true;
       //   root.dijkstra();
       //   break;
-      // default:
-      //   alert("Please select an algorithm before starting!")
+      default:
+        alert("Please select an algorithm before starting!")
     }
     
   }

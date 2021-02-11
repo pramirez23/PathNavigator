@@ -7,7 +7,7 @@ export default class Board {
     this.target;
     this.generateGrid();
     this.validMove = this.validMove.bind(this);
-    this.algorithmRunning = false;
+    this.algorithmStarted = false;
   }
 
   generateGrid() {
@@ -37,6 +37,10 @@ export default class Board {
         }
       }
     }
+  }
+
+  createWall() {
+    
   }
 
   validMove(pos) {
