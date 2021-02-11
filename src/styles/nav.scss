@@ -36,22 +36,6 @@ nav {
   }
 }
 
-
-.dropdown button{
-  font-family: 'Nunito Sans', sans-serif;
-  background: #525863;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  transition: 0.15s ease-in-out;
-}
-
-.drop-btn {
-  &:hover, &:focus{
-    background-color: #778396;
-  }
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
@@ -67,8 +51,50 @@ nav {
 
 .speed-slider-container {
   display: flex;
+  width: 200px;
   height: 30px;
   align-items: center;
+  justify-content: center;
+  p {
+    font-weight: 700;
+    margin-right: 5px;
+  }
+}
+
+.wall-controls-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 200px;
+
+  #clear-button, #randomize-button {
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    background: #dfb75b;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    width: 90px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    transition: 0.25s ease-in-out;
+  }
+
+  #clear-button {
+    &:hover {
+      cursor: pointer;
+      background-color: #c23838;
+    }
+  }
+
+  #randomize-button {
+    width: 100px;
+    &:hover {
+      cursor: pointer;
+      background-color: #cd8f00;
+    }
+  }
 }
 
 .visualization-buttons-container {
