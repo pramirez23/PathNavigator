@@ -24,9 +24,8 @@ nav {
   
   .nav-bar-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-
     background: #393e46;
     border-radius: 15px;
     width: 1300px;
@@ -35,6 +34,41 @@ nav {
     -webkit-box-shadow: 0px 0px 25px 6px #595959; 
     box-shadow: 0px 0px 25px 3px #595959;
   }
+}
+
+
+.dropdown button{
+  font-family: 'Nunito Sans', sans-serif;
+  background: #525863;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  transition: 0.15s ease-in-out;
+}
+
+.drop-btn {
+  &:hover, &:focus{
+    background-color: #778396;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.show {
+  display: block;
 }
 
 .visualization-buttons-container {

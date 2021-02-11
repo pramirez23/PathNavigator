@@ -27,7 +27,7 @@
     background-color: rgb(19, 105, 255);
     border-radius: 100%;
     transform: scale(0.55);
-    opacity: 10%;
+    opacity: 50%;
   }
 
   to {
@@ -40,8 +40,8 @@
 
 @keyframes pathTile {
   from {
-    background-color: rgb(249, 248, 234);
-    transform: scale(1.5);
+    background-color: rgb(255, 248, 153);
+    transform: scale(1.25);
   }
 
   to {

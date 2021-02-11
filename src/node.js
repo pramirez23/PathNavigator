@@ -70,14 +70,13 @@
   }
 
   reset() {
-    debugger
     let grid = this.grid;
     for (let row of grid) {
       for (const tile of row) {
-        debugger
         tile.node.parent = null;
         tile.node.children = new Array();
         document.getElementById(`${tile.pos.join("-")}`).classList.remove("searched")
+        document.getElementById(`${tile.pos.join("-")}`).classList.remove("path")
       }
     }
   }
@@ -125,8 +124,8 @@
 
       setTimeout(() => {
         tile.classList.add("searched")
-      }, 5 + offset);
-      offset += 10;
+      }, offset);
+      offset += 5;
     }
 
     if (searched.length === 0) {
@@ -144,8 +143,8 @@
       setTimeout(() => {
         tile.classList.remove("searched");
         tile.classList.add("path");
-      }, 9500 + offset);
-      offset += 10;
+      }, 4550 + offset);
+      offset += 50;
     }
   }
 }
