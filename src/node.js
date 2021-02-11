@@ -10,6 +10,8 @@
     this.searched = []; // Keeps track of searched tiles starting at root node
     this.visualizeSearch.bind(this);
     this.visualizePath.bind(this);
+    this.bfs.bind(this);
+    this.dfs.bind(this);
   }
 
   addParent(node) {
@@ -90,14 +92,11 @@
 
     while (queue.length > 0) {
       let node = queue.shift();
-
       if (node.type === "target") {
         let path = this.tracePath();
         this.visualizeSearch(this, this.grid, path);
         return;
-      } 
-
-      if (!["root", "target"].includes(node.type)) {
+      } else if (!["root", "target"].includes(node.type)) {
         this.searched.push(node.pos);
       }
 
@@ -112,7 +111,7 @@
       let node = stack.shift();
       if (node.type === "target") {
         let path = this.tracePath();
-        this.visualizeSearch(this, this.grid, this.searched, path);
+        this.visualizeSearch(this, this.grid, path);
         return;
       } else if (!["root", "target"].includes(node.type)) {
         this.searched.push(node.pos);
@@ -122,7 +121,6 @@
   }
   
   visualizeSearch(root, grid, path) {
-    debugger
     if (root.searched.length === 0) {
       this.visualizePath(root, grid, path);
     } else if (root.searched.length > 0) {      
@@ -130,8 +128,8 @@
         let pos = root.searched.shift();
         let tile = grid[pos[0]][pos[1]].tile;
         tile.classList.add("searched");
-        this.visualizeSearch(root, grid, root.searched, path);
-      }, 10);
+        this.visualizeSearch(root, grid, path);
+      }, 1);
     }
   }
   
@@ -140,12 +138,13 @@
       root.board.algorithmRunning = false;
     } else if (path.length > 0) {
       let pos = path.shift();
+      // debugger
       let tile = grid[pos[0]][pos[1]].tile;
       setTimeout(() => {
         tile.classList.remove("searched");
         tile.classList.add("path");
-        this.visualizePath(root, path, grid)
-      }, 5)
+        this.visualizePath(root, grid, path)
+      }, 15)
     }
   }
 }
