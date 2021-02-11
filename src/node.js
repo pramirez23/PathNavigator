@@ -7,6 +7,9 @@
     this.type = type;
     this.parent = null;
     this.children = [];
+
+    this.visualizeSearch.bind(this);
+    this.visualizePath.bind(this);
   }
 
   addParent(node) {
@@ -38,7 +41,6 @@
     // Create relationships between nodes on board
     // Using queue to evaluate each node individually
     let nodeQueue = [this];
-
     let searched = new Set();
     searched.add(this.pos.join("-"));
 
@@ -70,6 +72,8 @@
   }
 
   reset() {
+    if (this.board.algorithmRunning) return;
+
     let grid = this.grid;
     for (let row of grid) {
       for (const tile of row) {
@@ -84,13 +88,13 @@
   bfs() {
     let queue = [this];
     let searched = [];
-    
+
     while (queue.length > 0) {
       let node = queue.shift();
 
       if (node.type === "target") {
         let path = this.tracePath();
-        this.visualizeSearch(this.grid, searched, path);
+        this.visualizeSearch(this, this.grid, searched, path);
       } else if (!["root", "target"].includes(node.type)) {
         searched.push(node.pos);
       }
@@ -104,45 +108,50 @@
     
     while (stack.length > 0) {
       let node = stack.shift();
-
+      
       if (node.type === "target") {
         let path = this.tracePath();
-        this.visualizeSearch(this.grid, searched, path);
+        this.visualizeSearch(this, this.grid, searched, path);
       } else if (!["root", "target"].includes(node.type)) {
         searched.push(node.pos);
       }
       stack.unshift(...node.children);
     }
   }
-
-  visualizeSearch(grid, searched, path) {
+  
+  visualizeSearch(root, grid, searched, path) {
     let offset = 0;
     
     while (searched.length > 0) {      
       let pos = searched.shift();
       let tile = grid[pos[0]][pos[1]].tile;
-
+      
       setTimeout(() => {
         tile.classList.add("searched")
       }, offset);
       offset += 5;
     }
-
+    
     if (searched.length === 0) {
-      this.visualizePath(path, grid);
+      this.visualizePath(root, path, grid);
     }
   }
-
-  visualizePath(path, grid) {
+  
+  visualizePath(root, path, grid) {
     let offset = 0;
-
+    
     while (path.length > 0) {
       let pos = path.shift();
       let tile = grid[pos[0]][pos[1]].tile;
-
+      
       setTimeout(() => {
         tile.classList.remove("searched");
         tile.classList.add("path");
+        if (path.length === 0) {
+          setTimeout(() => {
+              root.board.algorithmRunning = false;
+          }, offset);
+        }
       }, 4550 + offset);
       offset += 50;
     }

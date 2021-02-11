@@ -7,6 +7,7 @@ export default class Board {
     this.target;
     this.generateGrid();
     this.validMove = this.validMove.bind(this);
+    this.algorithmRunning = false;
   }
 
   generateGrid() {
