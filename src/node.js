@@ -69,14 +69,18 @@
     }
   }
 
-  // fetchAllNodes(grid) {
-  //   const nodes = [];
-  //   for (let row of grid) {
-  //     for (const node of row) 
-  //     nodes.push(node)
-  //   }
-  //   return nodes;
-  // }
+  reset() {
+    debugger
+    let grid = this.grid;
+    for (let row of grid) {
+      for (const tile of row) {
+        debugger
+        tile.node.parent = null;
+        tile.node.children = new Array();
+        document.getElementById(`${tile.pos.join("-")}`).classList.remove("searched")
+      }
+    }
+  }
 
   bfs() {
     let queue = [this];
@@ -92,6 +96,23 @@
         searched.push(node.pos);
       }
       queue.push(...node.children);
+    }
+  }
+
+  dfs() {
+    let stack = [this];
+    let searched = [];
+    
+    while (stack.length > 0) {
+      let node = stack.shift();
+
+      if (node.type === "target") {
+        let path = this.tracePath();
+        this.visualizeSearch(this.grid, searched, path);
+      } else if (!["root", "target"].includes(node.type)) {
+        searched.push(node.pos);
+      }
+      stack.unshift(...node.children);
     }
   }
 

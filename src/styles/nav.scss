@@ -3,6 +3,25 @@ button:focus {
 }
 
 nav {
+  color: white;
+  
+  .information-panel-container {
+    width: 400px;
+
+    #algorithm-name {
+      display: flex;
+      justify-content: center;
+      width: auto;
+      text-decoration: underline;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    span {
+      line-height: 20px;
+    }
+  }
+  
   .nav-bar-container {
     display: flex;
     justify-content: center;
@@ -18,19 +37,40 @@ nav {
   }
 }
 
-#start-button { 
-  background-color: #1B8000;
-  color: white;
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: bold;
+.visualization-buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 125px;
   width: 100px;
-  height: 50px;
-  border-radius: 20px;
-  border: none;
-  transition: 0.25s ease-in-out;
 
-  &:hover {
-    cursor: pointer;
-    background-color: #26ae01;
+  #start-button, #reset-button { 
+    color: white;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    transition: 0.25s ease-in-out;
+  }
+  
+  #start-button {
+    background-color: #1B8000;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #26ae01;
+    }
+  }
+  
+  #reset-button {
+    background-color: #c12727;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #f43131;
+    }
   }
 }
+
