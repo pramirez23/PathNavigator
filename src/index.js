@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   startButton.addEventListener("click", startAlgorithm)
   resetButton.addEventListener("click", reset)
-  // algorithmButton.addEventListener("click", showDropdown)
-  // algorithmButton.addEventListener("click", showDropdown)
 
   function reset() {
     root.reset();

@@ -18,14 +18,14 @@ export default class Board {
         if (r === 13 && c === 9) {
 
           let root = new Tile(this, [13, 9], "root");
-          root.tile.classList.add("root")
+          root.tileEle.classList.add("root")
           this.root = root.node;
           this.grid[r].push(root);
 
         } else if (r === 13 && c === 41) {
 
           let target = new Tile(this, [13, 41], "target");
-          target.tile.classList.add("target")
+          target.tileEle.classList.add("target")
           this.target = target.node;
           this.grid[r].push(target);
 
@@ -39,13 +39,13 @@ export default class Board {
     }
   }
 
-  createWall() {
+  // createWall() {
     
-  }
+  // }
 
   validMove(pos) {
     let x = pos[0];
     let y = pos[1];
-    return (x >= 0 && x < 27) && (y >= 0 && y < 50) && (this.grid[x][y].type !== "wall");
+    return (x >= 0 && x < 27) && (y >= 0 && y < 50) && (this.grid[x][y].node.type !== "wall");
   }
 }

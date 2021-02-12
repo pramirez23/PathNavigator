@@ -128,10 +128,10 @@ export default class Node {
     } else if (root.searched.length > 0) {      
       setTimeout(() => {
         let pos = root.searched.shift();
-        let tile = grid[pos[0]][pos[1]].tile;
+        let tile = grid[pos[0]][pos[1]].tileEle;
         tile.classList.add("searched");
         this.visualizeSearch(root, grid, path);
-      }, 5);
+      }, 10);
     }
   }
   
@@ -140,7 +140,7 @@ export default class Node {
       root.board.algorithmStarted = false;
     } else if (path.length > 0) {
       let pos = path.shift();
-      let tile = grid[pos[0]][pos[1]].tile;
+      let tile = grid[pos[0]][pos[1]].tileEle;
       setTimeout(() => {
         tile.classList.remove("searched");
         tile.classList.add("path");
