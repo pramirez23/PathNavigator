@@ -1,6 +1,5 @@
 export default class Node {
   constructor(board, pos, type) {
-    this.tile = document.getElementById(`${pos[0]}-${pos[1]}`);
     this.board = board;
     this.grid = board.grid;
     this.pos = pos;
@@ -8,6 +7,7 @@ export default class Node {
     this.parent = null;
     this.children = [];
     this.searched = []; // Keeps track of searched tiles starting at root node
+    this.tile = document.getElementById(`${pos[0]}-${pos[1]}`);
     this.visualizeSearch.bind(this);
     this.visualizePath.bind(this);
     this.bfs.bind(this);
@@ -15,6 +15,7 @@ export default class Node {
   }
   
   reset() {
+    // Reset searched and path tiles to null
     if (this.board.algorithmStarted) return;
   
     let grid = this.grid;
@@ -27,7 +28,6 @@ export default class Node {
       }
     }
   }
-
   
   tracePath() {
     let path = [];
@@ -55,7 +55,6 @@ export default class Node {
         let dy = move[1];
         
         let nextPos = [node.pos[0] + dx, node.pos[1] + dy];
-        
         let nextPosX = nextPos[0];
         let nextPosY = nextPos[1];
         
@@ -103,6 +102,8 @@ export default class Node {
 
       queue.push(...node.children);
     }
+    this.board.algorithmStarted = false;
+    alert("Yo")
   }
 
   dfs() {
@@ -120,6 +121,9 @@ export default class Node {
 
       stack.unshift(...node.children);
     }
+    this.board.algorithmStarted = false;
+    debugger
+    alert("Yo")
   }
   
   visualizeSearch(root, grid, path) {

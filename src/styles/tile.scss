@@ -7,11 +7,19 @@
 }
 
 .root {
-  background: green;
+  background: url("/src/images/root_node.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
+  cursor: move;
 }
 
 .target {
-  background: red;
+  background: url("/src/images/target_node.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
+  cursor: move;
 }
 
 .wall {
@@ -24,13 +32,6 @@
 
 .path {
   animation: 0.75s ease both pathTile;
-
-    border-bottom: 1px;
-    border-bottom-color: #666;
-    border-bottom-style: solid;
-    border-right: 1px;
-    border-right-color: #666;
-    border-right-style: solid;
 }
 
 @keyframes searchTile {
