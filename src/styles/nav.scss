@@ -1,4 +1,4 @@
-button:focus {
+button:focus, select:focus {
   outline: none;
 }
 
@@ -34,13 +34,13 @@ nav {
         }
 
         &::-webkit-scrollbar-track {
-          background: transparent;        /* color of the tracking area */
+          background: transparent;
         }
 
         &::-webkit-scrollbar-thumb {
-          background-color: #5C636E;    /* color of the scroll thumb */
-          border-radius: 20px;       /* roundness of the scroll thumb */
-          border: 1px solid 393E46;  /* creates padding around scroll thumb */
+          background-color: #5C636E;  
+          border-radius: 20px;   
+          border: 1px solid #393E46; 
         }
       }
     }
@@ -62,7 +62,14 @@ nav {
 
 .dropdown {
   position: relative;
-  display: inline-block;
+  display: inline-block; 
+
+  select {
+    background-color: #5C636E;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Nunito Sans', sans-serif;
+  }
 }
 
 .controls-container {
