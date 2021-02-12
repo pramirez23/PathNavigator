@@ -61,10 +61,9 @@ export default class Tile {
       if (board.algorithmStarted) return;
 
       board.root.reset();
-      
-      let tileStartPos = e.target.id.split("-");
-      let x = tileStartPos[0];
-      let y = tileStartPos[1];
+      let tilePos = e.target.id.split("-");
+      let x = tilePos[0];
+      let y = tilePos[1];
       let tile = board.grid[x][y];
 
       if (tile.node.type === "wall") {
@@ -76,54 +75,14 @@ export default class Tile {
         e.target.classList.add("wall");
         e.target.classList.remove(null);
       }
-      // let tilePos = e.target.id.split("-");
-      // let x = tilePos[0];
-      // let y = tilePos[1];
-      // let tile = board.grid[x][y];
-
-      // if (tile.node.type === null) {
-      //   tile.tileEle.classList.add("wall");
-      //   tile.node.type = "wall";
-      // } else {
-      //   tile.tileEle.classList.remove("wall");
-      //   tile.node.type = null;
-      // }
     }
     
     const handleDragEnd = e => {
       e.preventDefault();
-      if (board.algorithmStarted) return;
-
-      let tilePos = e.target.id.split("-");
-      let x = tilePos[0];
-      let y = tilePos[1];
-      let tile = board.grid[x][y];
-
-      if (tile.node.type === null) {
-        tile.tileEle.classList.add("wall");
-        tile.node.type = "wall";
-      } else {
-        tile.tileEle.classList.remove("wall");
-        tile.node.type = null;
-      }
     }
 
     const handleDrop = e => {
       e.preventDefault();
-      if (board.algorithmStarted) return;
-
-      let tilePos = e.target.id.split("-");
-      let x = tilePos[0];
-      let y = tilePos[1];
-      let tile = board.grid[x][y];
-
-      if (tile.node.type === null) {
-        tile.tileEle.classList.add("wall");
-        tile.node.type = "wall";
-      } else {
-        tile.tileEle.classList.remove("wall");
-        tile.node.type = null;
-      }
     }
 
 
@@ -137,7 +96,7 @@ export default class Tile {
       })
     }
 
-    this.tileEle.addEventListener("dragstart", handleDragStart, false);
+    this.tileEle.addEventListener("dragstart", handleDragStart);
     this.tileEle.addEventListener("dragend", handleDragEnd);
   }
 }

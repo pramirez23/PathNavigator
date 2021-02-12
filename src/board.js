@@ -44,9 +44,16 @@ export default class Board {
     }
   }
 
-  // createWall() {
-    
-  // }
+  clearWalls() {
+    if (this.algorithmStarted) return;
+
+    let grid = this.grid
+    for (let row of grid) {
+      for (const tile of row) {
+        document.getElementById(`${tile.pos.join("-")}`).classList.remove("wall")
+      }
+    }
+  }
 
   validMove(pos) {
     let x = pos[0];

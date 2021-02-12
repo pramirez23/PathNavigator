@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const startButton = document.getElementById("start-button");
   const resetButton = document.getElementById("reset-button");
+  const clearButton = document.getElementById("clear-button");
   const algoSelector = document.getElementById("algo-dropdown");
 
   algoSelector.addEventListener("change", e => {
@@ -16,9 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   startButton.addEventListener("click", startAlgorithm)
   resetButton.addEventListener("click", reset)
+  clearButton.addEventListener("click", clear)
 
   function reset() {
     root.reset();
+  }
+
+  function clear() {
+    board.clearWalls();
   }
 
   function startAlgorithm() {
