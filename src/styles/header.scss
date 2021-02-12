@@ -36,30 +36,17 @@ header {
     flex-direction: row;
     justify-content: space-between;
     width: 900px;
-  } 
-}
 
-.contact-links-container {
-  // position: absolute;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-  ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 200px;
-    margin-right: 20px;
-    a {
-      text-decoration: none;
-      color: #ffd369;
-      transition: 0.3s;
-      &:hover {
-        color: rgb(237, 237, 237);
+      img, i {
+        margin-right: 5px;
       }
     }
-  }
+  } 
 }
 
 #root-legend {
@@ -87,4 +74,27 @@ header {
 
 #path-legend {
   color: #ffd369;
+}
+
+.contact-links-container {
+  // position: absolute;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 200px;
+    margin-right: 20px;
+    a {
+      text-decoration: none;
+      color: #ffd369;
+      transition: 0.3s;
+      &:hover {
+        color: rgb(237, 237, 237);
+      }
+    }
+  }
 }

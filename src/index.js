@@ -6,13 +6,33 @@ document.addEventListener("DOMContentLoaded", () => {
   let root = board.root;
   let selectedAlgorithm = null;
 
+  // Buttons
   const startButton = document.getElementById("start-button");
   const resetButton = document.getElementById("reset-button");
   const clearButton = document.getElementById("clear-button");
+
+  // Algorithm selector/controls
   const algoSelector = document.getElementById("algo-dropdown");
+  const algoTitle = document.getElementById("algorithm-title");
+  const algoInfo = document.getElementById("algorithm-info");
 
   algoSelector.addEventListener("change", e => {
     selectedAlgorithm = e.target.value
+
+    switch (selectedAlgorithm) {
+      case "bfs":
+        algoTitle.innerHTML = "Breadth-First Search (BFS)"
+        algoInfo.innerHTML = "An unweighted pathfinding algorithm that explores all of the root node's direct neighbors before moving onto the next level of neighbors. BFS uses a queue data structure (first in, first out) to evaluate nodes. This approach guarantees discovery of the shortest path to the target node."
+        break;
+      case "dfs":
+        algoTitle.innerHTML = "Depth-First Search (DFS)"
+        algoInfo.innerHTML = "An unweighted pathfinding algorithm that picks one of the root node's direct neighbors and explores as far down the tree as possible before searching the next neighbor and repeating the same process. DFS uses a stack data structure (last in, first out). This approach won’t guarantee the shortest path, but can use less memory than BFS."
+        break;
+      case "dijkstra":
+        algoTitle.innerHTML = "Dijkstra's Algorithm"
+        algoInfo.innerHTML = "Coming soon!"
+        break;
+    } 
   }) 
 
   startButton.addEventListener("click", startAlgorithm)
@@ -29,13 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function startAlgorithm() {
     if (board.algorithmStarted === true) return;
+
     reset();
     switch (selectedAlgorithm) {
       case "bfs":
         board.algorithmStarted = true;
         // Generate relationships between all tiles (set parents and children)
         root.generateTree();
-        // Traverse the tree to find target node using bfs
+        // Traverse the tree to find target node
         root.bfs();
         break;
       case "dfs":
