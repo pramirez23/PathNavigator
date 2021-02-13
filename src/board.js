@@ -47,10 +47,13 @@ export default class Board {
   clearWalls() {
     if (this.algorithmStarted) return;
 
-    let grid = this.grid
+    let grid = this.grid;
     for (let row of grid) {
       for (const tile of row) {
-        document.getElementById(`${tile.pos.join("-")}`).classList.remove("wall")
+        if (!["root", "target"].includes(tile.node.type)) {
+          tile.node.type = null;
+          document.getElementById(`${tile.pos.join("-")}`).classList.remove("wall");
+        }
       }
     }
   }

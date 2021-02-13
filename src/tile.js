@@ -85,8 +85,6 @@ export default class Tile {
       e.preventDefault();
     }
 
-
-
     if (["wall", null].includes(this.node.type)) {
       this.tileEle.addEventListener("click", handleClick)
       this.tileEle.addEventListener("dragenter", handleDragEnter)

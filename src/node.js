@@ -103,7 +103,7 @@ export default class Node {
       queue.push(...node.children);
     }
     this.board.algorithmStarted = false;
-    alert("Yo")
+    alert("Uh oh! It looks like you blocked all possible paths to the target node. Remove some walls and try again!")
   }
 
   dfs() {
@@ -123,7 +123,7 @@ export default class Node {
     }
     this.board.algorithmStarted = false;
     debugger
-    alert("Yo")
+    alert("Uh oh! It looks like you blocked all possible paths to the target node. Remove some walls and try again!")
   }
   
   visualizeSearch(root, grid, path) {
