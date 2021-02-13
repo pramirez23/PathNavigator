@@ -72,7 +72,6 @@ export default class Board {
     this.root = this.grid[x][y].node;
     this.root.type = "root";
     this.root.tile.classList.add("root");
-    debugger
   }
 
   resetTarget(pos) {

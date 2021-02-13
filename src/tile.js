@@ -78,9 +78,10 @@ export default class Tile {
     const handleDragEnter = e => {
       e.preventDefault();
       if (board.algorithmStarted) return;
+      board.root.reset();
       // Prevent making new walls while dragging root or tile nodes
       if (["root", "target"].includes(board.draggedTileType)) return;
-      // console.log("dragenter", e.target)
+      console.log("dragenter", e.target, board.draggedTileType)
       let tilePos = e.target.id.split("-");
       let x = tilePos[0];
       let y = tilePos[1];
@@ -99,16 +100,16 @@ export default class Tile {
       }
     }
     
-    const handleDragEnd = e => {
-      e.preventDefault();
-      // console.log("dragend", e.target)
-    }
+    // const handleDragEnd = e => {
+    //   e.preventDefault();
+    //   // console.log("dragend", e.target)
+    // }
 
     const handleDrop = e => {
       e.preventDefault();
       // console.log("drop", e.target)
       let tileDropPos = e.target.id.split("-");
-
+      // if (board.root.pos === tileDropPos) return;
       if (board.draggedTileType === "root") {
         board.resetRoot(tileDropPos);
       } else if (board.draggedTileType === "target") {
@@ -126,6 +127,6 @@ export default class Tile {
     }
 
     this.tileEle.addEventListener("dragstart", handleDragStart);
-    this.tileEle.addEventListener("dragend", handleDragEnd);
+    // this.tileEle.addEventListener("dragend", handleDragEnd);
   }
 }

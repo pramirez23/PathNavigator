@@ -71,13 +71,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function startAlgorithm() {
     if (board.algorithmStarted === true) return;
+    let root = board.root;
 
     reset();
     switch (selectedAlgorithm) {
       case "bfs":
         board.algorithmStarted = true;
         // Generate relationships between all tiles (set parents and children)
-        debugger
         root.generateTree();
         // Traverse the tree to find target node
         root.bfs();

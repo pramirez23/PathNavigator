@@ -32,7 +32,7 @@ export default class Node {
   tracePath() {
     let path = [];
     let node = this.board.target;
-    debugger
+    
     while (node.type !== "root" && node.parent.type !== "root") {
       // Tracing path back by adding parent's position to front of path array
       path.unshift(node.parent.pos);
