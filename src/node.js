@@ -12,6 +12,7 @@ export default class Node {
     this.visualizePath.bind(this);
     this.bfs.bind(this);
     this.dfs.bind(this);
+    this.reset = this.reset.bind(this);
   }
   
   reset() {

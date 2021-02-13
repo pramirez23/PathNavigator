@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         algoInfo.innerHTML = "Coming soon!"
         break;
     } 
-  }) 
+  });
   
   speedSelector.addEventListener("change", e => {
       let selectedSpeed = e.target.value;  
@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function clear() {
     board.clearWalls();
+    reset();
   }
 
   function startAlgorithm() {
@@ -89,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
         break;
       // case "dijkstra":
       //   board.algorithmStarted = true;
+      //   root.generateTree();
       //   root.dijkstra();
       //   break;
       default:

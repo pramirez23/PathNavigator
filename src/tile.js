@@ -28,7 +28,7 @@ export default class Tile {
       let x = tilePos[0];
       let y = tilePos[1];
       let tile = board.grid[x][y];
-      
+
       if (tile.node.type === null) {
         tile.tileEle.classList.add("wall");
         tile.node.type = "wall";
@@ -40,7 +40,8 @@ export default class Tile {
     
     const handleDragStart = e => {
       if (board.algorithmStarted) return;
-
+      board.root.reset();
+      
       let tileStartPos = e.target.id.split("-");
       let x = tileStartPos[0];
       let y = tileStartPos[1];
@@ -78,55 +79,62 @@ export default class Tile {
     const handleDragEnter = e => {
       e.preventDefault();
       if (board.algorithmStarted) return;
-      board.root.reset();
       // Prevent making new walls while dragging root or tile nodes
+      // console.log(board.draggedTileType)
       if (["root", "target"].includes(board.draggedTileType)) return;
-      console.log("dragenter", e.target, board.draggedTileType)
+      board.root.reset();
+      
+      // console.log("dragenter", e.target, board.draggedTileType)
+
       let tilePos = e.target.id.split("-");
       let x = tilePos[0];
       let y = tilePos[1];
       let tile = board.grid[x][y];
       let tileType = tile.node.type;
+      // debugger
       board.draggedTileType = tileType;
 
       if (tile.node.type === "wall") {
         tile.node.type = null;
-        e.target.classList.add(null);
+        // e.target.classList.add(null);
         e.target.classList.remove("wall");
       } else if (tile.node.type === null) {
         tile.node.type = "wall";
         e.target.classList.add("wall");
-        e.target.classList.remove(null);
+        // e.target.classList.remove(null);
       }
     }
     
-    // const handleDragEnd = e => {
-    //   e.preventDefault();
-    //   // console.log("dragend", e.target)
-    // }
-
     const handleDrop = e => {
       e.preventDefault();
-      // console.log("drop", e.target)
-      let tileDropPos = e.target.id.split("-");
-      // if (board.root.pos === tileDropPos) return;
+      
+      let tileDropPos = e.target.id.split("-").map(num => parseInt(num));
+      let x = tileDropPos[0];
+      let y = tileDropPos[1];
+      
+      if (board.root.pos === tileDropPos || (board.grid[x][y].node.type === "wall")) {
+        board.root.tile.classList.remove("hide");
+        return;
+      }
+      
       if (board.draggedTileType === "root") {
         board.resetRoot(tileDropPos);
+        // board.root.reset();
       } else if (board.draggedTileType === "target") {
         board.resetTarget(tileDropPos);
+        board.target.reset();
       }
     }
 
     if (["wall", null].includes(this.node.type)) {
       this.tileEle.addEventListener("click", handleClick)
-      this.tileEle.addEventListener("dragenter", handleDragEnter)
-      this.tileEle.addEventListener("drop", handleDrop)
-      this.tileEle.addEventListener("dragover", e => {
-        e.preventDefault();
-      })
     }
-
+    
+    this.tileEle.addEventListener("dragenter", handleDragEnter)
+    this.tileEle.addEventListener("drop", handleDrop)
     this.tileEle.addEventListener("dragstart", handleDragStart);
-    // this.tileEle.addEventListener("dragend", handleDragEnd);
+    this.tileEle.addEventListener("dragover", e => {
+      e.preventDefault();
+    })
   }
 }
