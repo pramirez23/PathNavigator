@@ -20,7 +20,6 @@ export default class Board {
           let root = new Tile(this, [13, 9], "root");
           root.tileEle.classList.add("root")
           root.tileEle.setAttribute("draggable", "true")
-
           this.root = root.node;
           this.grid[r].push(root);
 
@@ -29,7 +28,6 @@ export default class Board {
           let target = new Tile(this, [13, 41], "target");
           target.tileEle.classList.add("target")
           target.tileEle.setAttribute("draggable", "true")
-
           this.target = target.node;
           this.grid[r].push(target);
 

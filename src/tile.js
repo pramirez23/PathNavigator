@@ -20,7 +20,6 @@ export default class Tile {
   addEventListeners() {
     let board = this.board;
 
-    // Create actual img elements so ghost image shows on drag/drop
     const handleClick = e => {
       e.preventDefault();
       if (board.algorithmStarted) return;
