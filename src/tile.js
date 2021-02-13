@@ -54,9 +54,16 @@ export default class Tile {
       let rootImg = new Image();
       let targetImg = new Image();
       blankImg.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-      rootImg.src = "../src/images/root_node.png"
-      targetImg.src = "../src/images/target_node.png"
+      rootImg.src = "./src/images/root_node.png"
+      targetImg.src = "./src/images/target_node.png"
  
+      // Root/target drag image
+      if (tileType === "root") {
+        e.dataTransfer.setDragImage(rootImg, 10, 10);
+      } else if (tileType === "target") {
+        e.dataTransfer.setDragImage(targetImg, 10, 10);
+      }
+
       // Blank drag image
       if (!["root", "target"].includes(tileType)) {
         e.dataTransfer.setDragImage(blankImg, 0, 0);
@@ -68,12 +75,6 @@ export default class Tile {
         board.grid[x][y].tileEle.classList.add("hide");
       }
       
-      // Root/target drag image
-      if (tileType === "root") {
-        e.dataTransfer.setDragImage(rootImg, 10, 10);
-      } else if (tileType === "target") {
-        e.dataTransfer.setDragImage(targetImg, 10, 10);
-      }
     }
 
     const handleDragEnter = e => {
