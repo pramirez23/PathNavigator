@@ -62,25 +62,6 @@ export default class Board {
   }
 
   resetRoot(pos) {
-    // if (this.algorithmStarted) return;
-    
-    // let oldX = this.root.pos[0];
-    // let oldY = this.root.pos[1];
-    // let oldRootTile = this.grid[oldX][oldY];
-
-    // oldRootTile.node.type = null;
-    // oldRootTile.tileEle.classList.remove("hide");
-    // oldRootTile.tileEle.classList.remove("root");
-    
-    // let newX = pos[0];
-    // let newY = pos[1];
-    // // debugger
-    // let newRootTile = this.grid[newX][newY];
-    // this.root = newRootTile.node
-    // newRootTile.node.type = "root";
-    // newRootTile.tileEle.classList.add("root");
-    // newRootTile.addEventListeners();
-    // oldRootTile.addEventListeners();
     if (this.algorithmStarted) return;
 
     let x = pos[0];

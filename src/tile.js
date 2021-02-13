@@ -80,40 +80,36 @@ export default class Tile {
       e.preventDefault();
       if (board.algorithmStarted) return;
       // Prevent making new walls while dragging root or tile nodes
-      // console.log(board.draggedTileType)
       if (["root", "target"].includes(board.draggedTileType)) return;
       board.root.reset();
       
-      // console.log("dragenter", e.target, board.draggedTileType)
-
       let tilePos = e.target.id.split("-");
       let x = tilePos[0];
       let y = tilePos[1];
       let tile = board.grid[x][y];
       let tileType = tile.node.type;
-      // debugger
       board.draggedTileType = tileType;
 
       if (tile.node.type === "wall") {
         tile.node.type = null;
-        // e.target.classList.add(null);
         e.target.classList.remove("wall");
       } else if (tile.node.type === null) {
         tile.node.type = "wall";
         e.target.classList.add("wall");
-        // e.target.classList.remove(null);
       }
     }
     
     const handleDrop = e => {
       e.preventDefault();
-      
+
+      let invalidDropPos = [board.root.pos, board.target.pos]
       let tileDropPos = e.target.id.split("-").map(num => parseInt(num));
       let x = tileDropPos[0];
       let y = tileDropPos[1];
       
-      if (board.root.pos === tileDropPos || (board.grid[x][y].node.type === "wall")) {
+      if (invalidDropPos.includes(tileDropPos) || (board.grid[x][y].node.type === "wall")) {
         board.root.tile.classList.remove("hide");
+        board.target.tile.classList.remove("hide");
         return;
       }
       
@@ -122,7 +118,7 @@ export default class Tile {
         // board.root.reset();
       } else if (board.draggedTileType === "target") {
         board.resetTarget(tileDropPos);
-        board.target.reset();
+        // board.target.reset();
       }
     }
 
