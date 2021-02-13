@@ -5,6 +5,7 @@
   background-color: #f7f7f7;
   border-bottom: 1px solid #b6b6b6;
   border-right: 1px solid #b6b6b6;
+  // will-change: transform, background-color;
 }
 
 .root {
@@ -23,9 +24,6 @@
   cursor: move;
 }
 
-.wall {
-  background: #393E46;
-}
 
 .searched {
   animation: 1.0s ease both searchTile;
@@ -33,6 +31,10 @@
 
 .path {
   animation: 0.75s ease both pathTile;
+}
+
+.wall {
+  animation: 0.75s ease both placeWall;
 }
 
 @keyframes searchTile {
@@ -56,9 +58,19 @@
     background-color: rgb(255, 248, 153);
     transform: scale(1.25);
   }
-
+  
   to {
     background-color: #ffd369;;
     transform: scale(1.0);
+  }
+}
+
+@keyframes placeWall {
+  from {
+    background: #687180;
+  }
+
+  to {
+    background: #393E46;
   }
 }

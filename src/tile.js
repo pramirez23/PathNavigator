@@ -46,7 +46,7 @@ export default class Tile {
       let y = tileStartPos[1];
       let tile = board.grid[x][y];
       let tileType = tile.node.type;
-
+      console.log("dragstart", e.target)
       let blankImg = new Image();
       blankImg.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
@@ -58,7 +58,8 @@ export default class Tile {
     const handleDragEnter = e => {
       e.preventDefault();
       if (board.algorithmStarted) return;
-
+      
+      console.log("dragenter", e.target)
       board.root.reset();
       let tilePos = e.target.id.split("-");
       let x = tilePos[0];
