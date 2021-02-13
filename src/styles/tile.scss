@@ -24,6 +24,10 @@
   cursor: move;
 }
 
+// Hides root and target tiles while being dragged
+.hide {
+  background: #f7f7f7;
+}
 
 .searched {
   animation: 1.0s ease both searchTile;

@@ -9,6 +9,8 @@ export default class Board {
     this.validMove = this.validMove.bind(this);
     this.algorithmStarted = false;
     this.speed = 5;
+    // Keep track of what type of tile is being dragged
+    this.draggedTileType = null;
   }
 
   generateGrid() {
@@ -55,6 +57,37 @@ export default class Board {
         }
       }
     }
+  }
+
+  resetRoot(pos) {
+    if (this.algorithmStarted) return;
+
+    let x = pos[0];
+    let y = pos[1];
+
+    this.root.type = null;
+    this.root.tile.classList.remove("hide");
+    this.root.tile.classList.remove("root");
+
+    this.root = this.grid[x][y].node;
+    this.root.type = "root";
+    this.root.tile.classList.add("root");
+    debugger
+  }
+
+  resetTarget(pos) {
+    if (this.algorithmStarted) return;
+
+    let x = pos[0];
+    let y = pos[1];
+
+    this.target.type = null;
+    this.target.tile.classList.remove("hide");
+    this.target.tile.classList.remove("target");
+
+    this.target = this.grid[x][y].node;
+    this.target.type = "target";
+    this.target.tile.classList.add("target");
   }
 
   validMove(pos) {
