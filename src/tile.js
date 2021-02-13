@@ -54,8 +54,8 @@ export default class Tile {
       let rootImg = new Image();
       let targetImg = new Image();
       blankImg.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-      rootImg.src = "src/images/root_node.png"
-      targetImg.src = "src/images/target_node.png"
+      rootImg.src = "../src/images/root_node.png"
+      targetImg.src = "../src/images/target_node.png"
  
       // Blank drag image
       if (!["root", "target"].includes(tileType)) {
