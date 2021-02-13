@@ -94,7 +94,7 @@ export default class Node {
       let node = queue.shift();
       if (node.type === "target") {
         let path = this.tracePath();
-        this.visualizeSearch(this, this.grid, path);
+        this.visualizeSearch(this, this.grid, path, this.board.speed);
         return;
       } else if (!["root", "target"].includes(node.type)) {
         this.searched.push(node.pos);
@@ -113,7 +113,7 @@ export default class Node {
       let node = stack.shift();
       if (node.type === "target") {
         let path = this.tracePath();
-        this.visualizeSearch(this, this.grid, path);
+        this.visualizeSearch(this, this.grid, path, this.board.speed);
         return;
       } else if (!["root", "target"].includes(node.type)) {
         this.searched.push(node.pos);
@@ -122,11 +122,10 @@ export default class Node {
       stack.unshift(...node.children);
     }
     this.board.algorithmStarted = false;
-    debugger
     alert("Uh oh! It looks like you blocked all possible paths to the target node. Remove some walls and try again!")
   }
   
-  visualizeSearch(root, grid, path) {
+  visualizeSearch(root, grid, path, speed) {
     if (root.searched.length === 0) {
       this.visualizePath(root, grid, path);
     } else if (root.searched.length > 0) {      
@@ -134,8 +133,8 @@ export default class Node {
         let pos = root.searched.shift();
         let tile = grid[pos[0]][pos[1]].tileEle;
         tile.classList.add("searched");
-        this.visualizeSearch(root, grid, path);
-      }, 10);
+        this.visualizeSearch(root, grid, path, speed);
+      }, speed);
     }
   }
   

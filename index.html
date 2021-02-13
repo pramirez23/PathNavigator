@@ -77,15 +77,19 @@
               <option value="dijkstra">Dijkstra's Algorithm</option>
             </select>
           </div>
-
-          <div class="wall-controls-container">            
-            <button id="clear-button">CLEAR</button>
-            <button id="randomize-button">RANDOMIZE</button>
-          </div>
-
-          <div class="speed-slider-container">
-            <p>Speed</p> <input class="slider" id="speed-slider" type="range" min="1" max="100" step="1" value="50">
-          </div>
+          
+          <div class="dropdown">
+            <select id="speed-dropdown">
+              <option value="slow">Slow</option>
+              <option value="medium">Medium</option>
+              <option selected="true" value="fast">Fast</option>
+            </select>
+          </div>          
+        </div>
+        
+        <div class="wall-buttons-container">            
+          <button id="randomize-button">RANDOMIZE</button>
+          <button id="clear-button">CLEAR</button>
         </div>
 
         <div class="visualization-buttons-container">

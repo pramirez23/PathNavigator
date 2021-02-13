@@ -5,16 +5,20 @@ document.addEventListener("DOMContentLoaded", () => {
   let board = new Board();
   let root = board.root;
   let selectedAlgorithm = null;
-
-  // Buttons
-  const startButton = document.getElementById("start-button");
-  const resetButton = document.getElementById("reset-button");
-  const clearButton = document.getElementById("clear-button");
-
+  
   // Algorithm selector/controls
   const algoSelector = document.getElementById("algo-dropdown");
+  const speedSelector = document.getElementById("speed-dropdown");
   const algoTitle = document.getElementById("algorithm-title");
   const algoInfo = document.getElementById("algorithm-info");
+
+  // Wall control buttons
+  const randomizeButton = document.getElementById("randomize-button");
+  const clearButton = document.getElementById("clear-button");
+  
+  // Visualization buttons
+  const startButton = document.getElementById("start-button");
+  const resetButton = document.getElementById("reset-button");
 
   algoSelector.addEventListener("change", e => {
     selectedAlgorithm = e.target.value
@@ -34,10 +38,28 @@ document.addEventListener("DOMContentLoaded", () => {
         break;
     } 
   }) 
+  
+  speedSelector.addEventListener("change", e => {
+      let selectedSpeed = e.target.value;  
 
-  startButton.addEventListener("click", startAlgorithm)
-  resetButton.addEventListener("click", reset)
-  clearButton.addEventListener("click", clear)
+      switch (selectedSpeed) {
+        case "slow":
+          board.speed = 30;
+          break;
+        case "medium":
+          board.speed = 15;
+          break;
+        case "fast":
+          board.speed = 5;
+          break;
+      }
+    }
+  );
+
+  startButton.addEventListener("click", startAlgorithm);
+  resetButton.addEventListener("click", reset);
+  clearButton.addEventListener("click", clear);
+
 
   function reset() {
     root.reset();
@@ -69,8 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       //   root.dijkstra();
       //   break;
       default:
-        alert("Please select an algorithm before starting!")
+        alert("Don't forget to pick an algorithm!")
     }
-    
   }
 })
