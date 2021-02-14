@@ -42,7 +42,7 @@ export default class Tile {
     const handleDragStart = e => {
       if (board.algorithmStarted) return;
       board.root.reset();
-      
+
       let tileStartPos = e.target.id.split("-");
       let x = tileStartPos[0];
       let y = tileStartPos[1];
@@ -79,6 +79,7 @@ export default class Tile {
 
     const handleDragEnter = e => {
       e.preventDefault();
+
       if (board.algorithmStarted) return;
       // Prevent making new walls while dragging root or tile nodes
       if (["root", "target"].includes(board.draggedTileType)) return;
@@ -100,7 +101,6 @@ export default class Tile {
     
     const handleDrop = e => {
       e.preventDefault();
-
       let invalidDropPos = [board.root.pos, board.target.pos]
       let tileDropPos = e.target.id.split("-").map(num => parseInt(num));
       let x = tileDropPos[0];
@@ -121,6 +121,11 @@ export default class Tile {
       }
     }
 
+    const handleDragEnd = e => {
+      board.root.tile.classList.remove("hide");
+      board.target.tile.classList.remove("hide");
+    }
+ 
     if (["wall", null].includes(this.node.type)) {
       this.tileEle.addEventListener("click", handleClick)
     }
@@ -128,6 +133,7 @@ export default class Tile {
     this.tileEle.addEventListener("dragenter", handleDragEnter)
     this.tileEle.addEventListener("drop", handleDrop)
     this.tileEle.addEventListener("dragstart", handleDragStart);
+    this.tileEle.addEventListener("dragend", handleDragEnd);
     this.tileEle.addEventListener("dragover", e => {
       e.preventDefault();
     })

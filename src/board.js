@@ -9,8 +9,8 @@ export default class Board {
     this.validMove = this.validMove.bind(this);
     this.algorithmStarted = false;
     this.speed = 5;
-    // Keep track of what type of tile is being dragged
-    this.draggedTileType = null;
+    this.draggedTileType = null; // Keep track of what type of tile is being dragged
+    
     this.resetRoot = this.resetRoot.bind(this);
     this.resetTarget = this.resetTarget.bind(this);
     this.randomizeWalls = this.randomizeWalls.bind(this);
@@ -50,7 +50,7 @@ export default class Board {
 
   randomizeWalls() {
     if (this.algorithmStarted) return;
-    
+
     const moves = [
       [0, 1],
       [1, 0],
@@ -60,7 +60,7 @@ export default class Board {
 
     this.clearWalls();
     
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < 550; i++) {
       let x = Math.floor(Math.random() * 27);
       let y = Math.floor(Math.random() * 50);      
       let currentNode = this.grid[x][y].node;

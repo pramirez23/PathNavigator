@@ -1,13 +1,15 @@
 header {
   display: flex;
   flex-direction: row;
+  position: fixed;
   height: 60px;
-  width: 100vw;
+  width: 100%;
   justify-content: space-between;
   background-color: #393e46;
   color: #ffd369;
   font-size: 25px;
   font-weight: 700;
+  overflow-x: hidden;
 
   .header-logo {
     display: flex;

@@ -9,6 +9,13 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin-top: 20px;
+  justify-content: space-evenly;
+  margin-top: 80px;
+  height: 88vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
