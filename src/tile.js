@@ -23,7 +23,8 @@ export default class Tile {
     const handleClick = e => {
       e.preventDefault();
       if (board.algorithmStarted) return;
-      
+      board.root.reset();
+
       let tilePos = e.target.id.split("-");
       let x = tilePos[0];
       let y = tilePos[1];
@@ -74,7 +75,6 @@ export default class Tile {
       if (["root", "target"].includes(tileType)) {
         board.grid[x][y].tileEle.classList.add("hide");
       }
-      
     }
 
     const handleDragEnter = e => {
@@ -114,10 +114,8 @@ export default class Tile {
       
       if (board.draggedTileType === "root") {
         board.resetRoot(tileDropPos);
-        // board.root.reset();
       } else if (board.draggedTileType === "target") {
         board.resetTarget(tileDropPos);
-        // board.target.reset();
       } else {
         return;
       }

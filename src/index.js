@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         break;
       case "dfs":
         algoTitle.innerHTML = "Depth-First Search (DFS)"
-        algoInfo.innerHTML = "An unweighted pathfinding algorithm that picks one of the root node's direct neighbors and explores as far down the tree as possible before searching the next neighbor and repeating the same process. DFS uses a stack data structure (last in, first out). This approach won’t guarantee the shortest path, but can use less memory than BFS."
+        algoInfo.innerHTML = "An unweighted pathfinding algorithm that picks one of the root node's direct neighbors and explores as far down the tree as possible before searching the next neighbor and repeating the same process. DFS uses a stack data structure (last in, first out). This approach won’t guarantee the shortest path, but can use less memory than BFS and is better suited for far away targets."
         break;
       case "dijkstra":
         algoTitle.innerHTML = "Dijkstra's Algorithm"
