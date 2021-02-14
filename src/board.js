@@ -13,6 +13,7 @@ export default class Board {
     this.draggedTileType = null;
     this.resetRoot = this.resetRoot.bind(this);
     this.resetTarget = this.resetTarget.bind(this);
+    this.randomizeWalls = this.randomizeWalls.bind(this);
   }
 
   generateGrid() {
@@ -54,8 +55,7 @@ export default class Board {
       [0, -1],
       [-1, 0]
     ]
-    
-    let that = this;
+
     this.clearWalls();
     
     for (let i = 0; i < 500; i++) {
@@ -69,8 +69,8 @@ export default class Board {
         let dx = move[0];
         let dy = move[1];
 
-        invalidNodes.push(`${that.root.pos[0] + dx}-${that.root.pos[1] + dy}`);
-        invalidNodes.push(`${that.target.pos[0] + dx}-${that.target.pos[1] + dy}`);
+        invalidNodes.push(`${this.root.pos[0] + dx}-${this.root.pos[1] + dy}`);
+        invalidNodes.push(`${this.target.pos[0] + dx}-${this.target.pos[1] + dy}`);
       })
   
       if (invalidNodes.includes(currentNode.tile.id)) {
