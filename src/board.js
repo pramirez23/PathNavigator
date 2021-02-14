@@ -47,6 +47,41 @@ export default class Board {
     }
   }
 
+  randomizeWalls() {
+    const moves = [
+      [0, 1],
+      [1, 0],
+      [0, -1],
+      [-1, 0]
+    ]
+    
+    let that = this;
+    this.clearWalls();
+    
+    for (let i = 0; i < 500; i++) {
+      let x = Math.floor(Math.random() * 27);
+      let y = Math.floor(Math.random() * 50);      
+      let currentNode = this.grid[x][y].node;
+      let invalidNodes = new Array();
+      
+      // Make sure wall does not block root or target
+      moves.forEach(move => {
+        let dx = move[0];
+        let dy = move[1];
+
+        invalidNodes.push(`${that.root.pos[0] + dx}-${that.root.pos[1] + dy}`);
+        invalidNodes.push(`${that.target.pos[0] + dx}-${that.target.pos[1] + dy}`);
+      })
+  
+      if (invalidNodes.includes(currentNode.tile.id)) {
+        continue;
+      } else if (currentNode.type === null) {
+        currentNode.type = "wall";
+        currentNode.tile.classList.add("wall");
+      }
+    }
+  }
+
   clearWalls() {
     if (this.algorithmStarted) return;
 

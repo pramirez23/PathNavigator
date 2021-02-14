@@ -59,17 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
   startButton.addEventListener("click", startAlgorithm);
   resetButton.addEventListener("click", reset);
   clearButton.addEventListener("click", clear);
-
-
-  function reset() {
-    root.reset();
-  }
-
-  function clear() {
-    board.clearWalls();
-    reset();
-  }
-
+  randomizeButton.addEventListener("click", randomizeWalls);
+  
   function startAlgorithm() {
     if (board.algorithmStarted === true) return;
     let root = board.root;
@@ -97,4 +88,19 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Don't forget to pick an algorithm!")
     }
   }
+
+  function reset() {
+    root.reset();
+  }
+
+  function clear() {
+    board.clearWalls();
+    reset();
+  }
+
+  function randomizeWalls() {
+    reset();
+    board.randomizeWalls();
+  }
 })
+
