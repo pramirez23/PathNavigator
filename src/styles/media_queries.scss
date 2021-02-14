@@ -24,9 +24,12 @@ only screen and (max-width: 1355px) {
   }
 }
 
-@media only screen and (max-height: 880px),
+@media only screen and (max-height: 915px),
 only screen and (max-width: 1230px) {
-  
+  main {
+    height: 85vh;
+  }
+
   #grid {
     height: 590px;
     width: 1100px;
@@ -89,6 +92,7 @@ only screen and (max-width: 1040px) {
 
   main {
     margin-top: 60px;
+
   }
 
   #grid {
@@ -133,4 +137,52 @@ only screen and (max-width: 1040px) {
     }
   }
 
+}
+
+// Legend-specific media query
+@media only screen and (max-width: 1420px) {
+  .node-legend-container {
+    display: none;
+  }
+
+  main {
+    .small-node-legend {
+      font-size: 16px;
+      font-weight: 800;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      color: rgb(237, 237, 237);
+      padding: 15px;
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 900px;
+
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img, i {
+            margin-right: 5px;
+          }
+        }
+      } 
+    }
+  }
+}
+
+@media only screen and (max-width: 1040px) {
+  main {
+    .small-node-legend {
+      font-size: 14px;
+
+      ul {
+        width: 800px;
+      }
+    }
+  }
 }
