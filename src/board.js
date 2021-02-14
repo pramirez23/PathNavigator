@@ -49,6 +49,8 @@ export default class Board {
   }
 
   randomizeWalls() {
+    if (this.algorithmStarted) return;
+    
     const moves = [
       [0, 1],
       [1, 0],

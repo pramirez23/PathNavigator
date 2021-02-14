@@ -88,8 +88,6 @@ export default class Tile {
       let x = tilePos[0];
       let y = tilePos[1];
       let tile = board.grid[x][y];
-      let tileType = tile.node.type;
-      board.draggedTileType = tileType;
 
       if (tile.node.type === "wall") {
         tile.node.type = null;
@@ -120,6 +118,8 @@ export default class Tile {
       } else if (board.draggedTileType === "target") {
         board.resetTarget(tileDropPos);
         // board.target.reset();
+      } else {
+        return;
       }
     }
 
