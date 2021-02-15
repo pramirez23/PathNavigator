@@ -145,19 +145,20 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateModal() {
     switch(modalPage) {
       case 1:
-        modalTitle.innerHTML = "Pick an algorithm and speed";
         backButton.classList.add("hide-button");
         nextButton.classList.remove("hide-button");
+        modalTitle.innerHTML = "Pick an algorithm and speed";
         modalPageNum.innerHTML = "1/3"
         break;
       case 2:
-        modalTitle.innerHTML = "Draw or randomly generate walls";
         backButton.classList.remove("hide-button");
         nextButton.classList.remove("hide-button");
+        modalTitle.innerHTML = "Draw or randomly generate walls";
         modalPageNum.innerHTML = "2/3"
         break;
       case 3:
         modalTitle.innerHTML = "Visualize the search algorithm";
+        
         nextButton.classList.add("hide-button");
         modalPageNum.innerHTML = "3/3"
         break;
