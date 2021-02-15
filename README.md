@@ -14,34 +14,34 @@
 Users are able to:
   - Select a pathfinding algorithm and visualization speed
     <div align="center">
-      <img src="src/images/select_demo.gif" alt="Selection Demo" width="800" style="vertical-align:middle">
+      <img src="src/images/select_demo.gif" alt="Selection Demo" width="500" style="vertical-align:middle">
     </div>
 
     <br />
 
   - Move the start and target nodes anywhere on the graph    
     <div align="center">
-      <img src="src/images/repositioning_demo.gif" alt="Repositioning Nodes Demo" width="800" style="vertical-align:middle">
+      <img src="src/images/repositioning_demo.gif" alt="Repositioning Nodes Demo" width="500" style="vertical-align:middle">
     </div>
 
     <br />
 
   - Draw or randomly generate walls on the graph around a root and target node
     <div align="center">
-      <img src="src/images/draw_demo.gif" alt="Drawing Demo" width="800" style="vertical-align:middle">
+      <img src="src/images/draw_demo.gif" alt="Drawing Demo" width="500" style="vertical-align:middle">
     </div>
 
     <br />
     
     <div align="center">
-      <img src="src/images/random_walls_demo.gif" alt="Random Wall Generation Demo" width="800" style="vertical-align:middle">
+      <img src="src/images/random_walls_demo.gif" alt="Random Wall Generation Demo" width="500" style="vertical-align:middle">
     </div>
 
     <br />
 
   - Visualize pathfinding algorithms
     <div align="center">
-      <img src="src/images/search_demo.gif" alt="Visualization Demo" width="800" style="vertical-align:middle">
+      <img src="src/images/search_demo.gif" alt="Visualization Demo" width="500" style="vertical-align:middle">
     </div>
 
 ## Code Snippets
