@@ -6,6 +6,10 @@
   display: none;
 }
 
+.hide-button {
+  visibility: hidden;
+}
+
 #modal { 
   position: fixed;
   background-color: #393e46;
@@ -25,6 +29,10 @@
     font-size: 35px;
     font-weight: 700;
     cursor: default;
+    
+    #modal-logo {
+      margin-left: 15px;
+    }
 
     #exit-button {
       background: none;
@@ -37,6 +45,16 @@
         outline: none;
       }
     }
+  }
+
+  #modal-title, #modal-page-num {
+    text-align: center;
+    color: white;
+    font-weight: 700;
+  }
+
+  #modal-title {
+    font-size: 25px;
   }
 
   .modal-content {
@@ -53,6 +71,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    #modal-page-num {
+      font-size: 20px;
+    }
 
     #back-button, #next-button {
       background: none;

@@ -20,13 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const startButton = document.getElementById("start-button");
   const resetButton = document.getElementById("reset-button");
 
-  // Modal buttons, modal element
+  // Modal buttons, modal elements
   const modal = document.getElementById("modal");
   const helpButton = document.getElementById("help-button");
   const nextButton = document.getElementById("next-button");
   const backButton = document.getElementById("back-button");
   const exitButton = document.getElementById("exit-button");
-
+  const modalTitle = document.getElementById("modal-title");
+  const modalImage = document.getElementById("modal-image");
+  const modalText = document.getElementById("modal-text");
+  const modalPageNum = document.getElementById("modal-page-num")
   // Visualization control/wall button event listeners
   algoSelector.addEventListener("change", e => {
     selectedAlgorithm = e.target.value
@@ -114,26 +117,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Modal event listeners
   helpButton.addEventListener("click", openModal);
-  nextButton.addEventListener("click", updateModal);
-  backButton.addEventListener("click", updateModal);
+  nextButton.addEventListener("click", nextPage);
+  backButton.addEventListener("click", prevPage);
   exitButton.addEventListener("click", closeModal)
 
   function openModal() {
     modal.classList.remove("hide-modal");
     modal.classList.add("show-modal");
+    modalPage = 1;
+    updateModal();
   }
   
+  function nextPage() {
+    modalPage++
+    updateModal();
+  }
+  
+  function prevPage() {
+    modalPage--
+    updateModal();
+  }
+
+  // const modalTitle
+  // const modalImage
+  // const modalText
+  // const modalPageNum
   function updateModal() {
     switch(modalPage) {
-      case "1":
-      case "2":
-      case "3":
+      case 1:
+        modalTitle.innerHTML = "Pick an algorithm and speed";
+        backButton.classList.add("hide-button");
+        nextButton.classList.remove("hide-button");
+        modalPageNum.innerHTML = "1/3"
+        break;
+      case 2:
+        modalTitle.innerHTML = "Draw or randomly generate walls";
+        backButton.classList.remove("hide-button");
+        nextButton.classList.remove("hide-button");
+        modalPageNum.innerHTML = "2/3"
+        break;
+      case 3:
+        modalTitle.innerHTML = "Visualize the search algorithm";
+        nextButton.classList.add("hide-button");
+        modalPageNum.innerHTML = "3/3"
+        break;
     }
   }
 
+  
   function closeModal() {
     modal.classList.remove("show-modal");
     modal.classList.add("hide-modal");
   }
+  
+  // Show page one of modal when page first loads
+  updateModal()
 })
 
