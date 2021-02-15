@@ -6,3 +6,60 @@
   display: none;
 }
 
+#modal { 
+  position: fixed;
+  background-color: #393e46;
+  background-color: rgba(0,0,0,0.6);
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  overflow: auto;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffd369;
+    font-size: 35px;
+    font-weight: 700;
+    cursor: default;
+
+    #exit-button {
+      background: none;
+      border: none;
+      font-size: 45px;
+      color: #ffd369;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .modal-content {
+    background-color: #393e46;
+    -webkit-box-shadow: 0px 0px 25px 6px #323232; 
+    box-shadow: 0px 0px 25px 3px #323232;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 15px;  
+    width: 80%;
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    #back-button, #next-button {
+      background: none;
+      border: none;
+      font-size: 45px;
+      color: #ffd369;
+      cursor: pointer;
+    }
+  }
+}
