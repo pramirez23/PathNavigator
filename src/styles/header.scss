@@ -1,4 +1,4 @@
-header {
+#info-header {
   display: flex;
   flex-direction: row;
   position: fixed;
@@ -87,9 +87,23 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     width: 200px;
     margin-right: 20px;
-    a {
+
+    button {
+      background: none;
+      border: none;
+      font-size: 25px;
+      padding: 0px;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    a, button {
       text-decoration: none;
       color: #ffd369;
       transition: 0.3s;

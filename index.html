@@ -16,8 +16,8 @@
     rel="stylesheet">
 </head>
 
-<body>
-  <header>
+<body id="main-body">
+  <header id="info-header">
     <div class="header-logo">
       <h1><i class="fas fa-route"></i> PathNavigator</h1>
     </div>
@@ -35,6 +35,7 @@
 
     <div class="contact-links-container">
       <ul class="links">
+        <button id="help-button"><i class="fas fa-question-circle"></i></button>
         <li>
           <a href="https://github.com/pramirez23/PathNavigator" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-github"></i>
@@ -113,7 +114,26 @@
     </nav>
   </main>
 
+  <div id="modal">
+    <div class="modal-content">
+      <header id="modal-header">
+        <div class="modal-logo">
+          <h1><i class="fas fa-route"></i> PathNavigator</h1>
+        </div>
+        <button id="exit-button">&times;</button>
+      </header>
 
+      <body id="modal-body">
+        <p class="modal-title"></p>
+        <div class="modal-image"></div>
+        <p class="modal-text"></p>
+      </body>
+
+      <footer id="modal-footer">
+        <button id="back-button"><i class="fas fa-arrow-alt-circle-left"></i></button>
+        <button id="next-button"><i class="fas fa-arrow-alt-circle-right"></i></button>
+      </footer>
+    </div>
+  </div>
 </body>
-
 </html>

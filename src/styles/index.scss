@@ -4,6 +4,7 @@
 @import "./board.scss";
 @import "./tile.scss";
 @import "./media_queries.scss";
+@import "./modal.scss";
 
 main {
   display: flex;
@@ -14,7 +15,7 @@ main {
   height: 88vh;
 }
 
-body {
+#main-body  {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

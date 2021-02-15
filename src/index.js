@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let board = new Board();
   let root = board.root;
   let selectedAlgorithm = null;
-  
+  let modalPage = 1;
   // Algorithm selector/controls
   const algoSelector = document.getElementById("algo-dropdown");
   const speedSelector = document.getElementById("speed-dropdown");
@@ -20,6 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const startButton = document.getElementById("start-button");
   const resetButton = document.getElementById("reset-button");
 
+  // Modal buttons, modal element
+  const modal = document.getElementById("modal");
+  const helpButton = document.getElementById("help-button");
+  const nextButton = document.getElementById("next-button");
+  const backButton = document.getElementById("back-button");
+  const exitButton = document.getElementById("exit-button");
+
+  // Visualization control/wall button event listeners
   algoSelector.addEventListener("change", e => {
     selectedAlgorithm = e.target.value
 
@@ -61,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   clearButton.addEventListener("click", clear);
   randomizeButton.addEventListener("click", randomizeWalls);
   
+  // Visualization button/wall button functions
   function startAlgorithm() {
     if (board.algorithmStarted === true) return;
     let root = board.root;
@@ -101,6 +110,30 @@ document.addEventListener("DOMContentLoaded", () => {
   function randomizeWalls() {
     reset();
     board.randomizeWalls();
+  }
+
+  // Modal event listeners
+  helpButton.addEventListener("click", openModal);
+  nextButton.addEventListener("click", updateModal);
+  backButton.addEventListener("click", updateModal);
+  exitButton.addEventListener("click", closeModal)
+
+  function openModal() {
+    modal.classList.remove("hide-modal");
+    modal.classList.add("show-modal");
+  }
+  
+  function updateModal() {
+    switch(modalPage) {
+      case "1":
+      case "2":
+      case "3":
+    }
+  }
+
+  function closeModal() {
+    modal.classList.remove("show-modal");
+    modal.classList.add("hide-modal");
   }
 })
 
