@@ -144,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // const modalImage
   // const modalText
   // const modalPageNum
+  
   function updateModal() {
     switch(modalPage) {
       case 1:

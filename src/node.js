@@ -43,31 +43,29 @@ export default class Node {
   }
   
   generateTree() {
-    // Create relationships between nodes on board
-    // Using queue to evaluate each node individually
     let nodeQueue = [this];
-    let searched = new Set();
-    searched.add(this.pos.join("-"));
-    
+    let nodes = new Set();
+    nodes.add(this.pos.join("-"));
+
     while (!!nodeQueue.length) {
-      let node = nodeQueue.shift(); 
-      
+      let node = nodeQueue.shift();
+
       Node.MOVES.forEach(move => {
         let dx = move[0];
         let dy = move[1];
-        
+
         let nextPos = [node.pos[0] + dx, node.pos[1] + dy];
         let nextPosX = nextPos[0];
         let nextPosY = nextPos[1];
-        
+
         if (node.board.validMove(nextPos)) {
-          let neighbor = this.grid[nextPosX][nextPosY].node
-          
-          if (searched.has(`${nextPosX}-${nextPosY}`)) {
+          let neighbor = this.grid[nextPosX][nextPosY].node;
+
+          if (nodes.has(`${nextPosX}-${nextPosY}`)) {
             return;
           }
-          
-          searched.add(nextPos.join("-"));
+
+          nodes.add(nextPos.join("-"));
           neighbor.addParent(node);
           nodeQueue.push(neighbor);
         }
