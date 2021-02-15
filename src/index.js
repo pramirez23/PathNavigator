@@ -150,38 +150,60 @@ document.addEventListener("DOMContentLoaded", () => {
         backButton.classList.add("hide-button");
         nextButton.classList.remove("hide-button");
 
+        modalTitle.innerHTML = "Pick an algorithm and speed";
+
         gif1.style.display = "block";
         gif2.style.display = "none";
         gif3.style.display = "none";
         gif4.style.display = "none";
+        gif5.style.display = "none";
 
-        modalTitle.innerHTML = "Pick an algorithm and speed";
         modalText.innerHTML = "Welcome to PathNavigator! Let's get started by selecting an algorithm and visualization speed from the dropdown menus at the bottom of the page (Fast is selected by default).";
-        modalPageNum.innerHTML = "1/3"
+        modalPageNum.innerHTML = "1/4"
         break;
       case 2:
         backButton.classList.remove("hide-button");
         nextButton.classList.remove("hide-button");
 
+        modalTitle.innerHTML = "Draw or randomly generate walls";
+        
         gif1.style.display = "none";
         gif2.style.display = "block";
         gif3.style.display = "block";
         gif4.style.display = "none";
+        gif5.style.display = "none";
 
-        modalTitle.innerHTML = "Draw or randomly generate walls";
-        modalText.innerHTML = "You can click or drag over blank tiles to place walls for the search algorithm to avoid. Alternatively, you can use the 'randomize' button to generate random walls."
-        modalPageNum.innerHTML = "2/3"
+        modalText.innerHTML = "You can click or drag over blank tiles to place walls for the search algorithm to avoid. <br/> <br/> Alternatively, you can use the <b>RANDOMIZE</b> button to generate random walls.* <br/> <br/> <i>*Pro tip: Use the <b>CLEAR</b> button to clear all of the walls on the board.</i>" 
+        modalPageNum.innerHTML = "2/4"
         break;
       case 3:
-        modalTitle.innerHTML = "Visualize the search algorithm";
+        backButton.classList.remove("hide-button");
+        nextButton.classList.remove("hide-button");
+
+        modalTitle.innerHTML = "Reposition the root and target nodes";
         
         gif1.style.display = "none";
         gif2.style.display = "none";
         gif3.style.display = "none";
         gif4.style.display = "block";
+        gif5.style.display = "none";
 
+        modalText.innerHTML = "Shake things up! Reposition the root and target nodes by clicking and dragging them to any empty tile on the board."
+        modalPageNum.innerHTML = "3/4"
+        break;
+      case 4:
         nextButton.classList.add("hide-button");
-        modalPageNum.innerHTML = "3/3"
+
+        modalTitle.innerHTML = "Visualize the search algorithm";
+
+        gif1.style.display = "none";
+        gif2.style.display = "none";
+        gif3.style.display = "none";
+        gif4.style.display = "none";
+        gif5.style.display = "block";
+        modalText.innerHTML = "It's time to watch the magic of search algorithms in action! Click <start>START</start> to begin the visualization animation.* <br/> <br/> <i>*Pro tip: Click <reset>RESET</reset> to clear the visualization tiles once the algorithm is finished running (this won't remove any of the walls you've placed).</i>"
+
+        modalPageNum.innerHTML = "4/4"
         break;
     }
   }
