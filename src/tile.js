@@ -24,11 +24,11 @@ export default class Tile {
       e.preventDefault();
       if (board.algorithmStarted) return;
       board.root.reset();
-
       let tilePos = e.target.id.split("-");
       let x = tilePos[0];
       let y = tilePos[1];
       let tile = board.grid[x][y];
+      if (["root", "target"].includes(tile.node.type)) return;
 
       if (tile.node.type === null) {
         tile.tileEle.classList.add("wall");
@@ -105,7 +105,7 @@ export default class Tile {
       let tileDropPos = e.target.id.split("-").map(num => parseInt(num));
       let x = tileDropPos[0];
       let y = tileDropPos[1];
-      
+
       if (invalidDropPos.includes(tileDropPos) || (board.grid[x][y].node.type === "wall")) {
         board.root.tile.classList.remove("hide");
         board.target.tile.classList.remove("hide");
@@ -125,11 +125,8 @@ export default class Tile {
       board.root.tile.classList.remove("hide");
       board.target.tile.classList.remove("hide");
     }
- 
-    if (["wall", null].includes(this.node.type)) {
-      this.tileEle.addEventListener("click", handleClick)
-    }
-    
+
+    this.tileEle.addEventListener("click", handleClick)
     this.tileEle.addEventListener("dragenter", handleDragEnter)
     this.tileEle.addEventListener("drop", handleDrop)
     this.tileEle.addEventListener("dragstart", handleDragStart);

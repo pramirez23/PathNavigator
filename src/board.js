@@ -118,7 +118,7 @@ export default class Board {
 
     let x = pos[0];
     let y = pos[1];
-
+    
     this.target.type = null;
     this.target.tile.classList.remove("hide");
     this.target.tile.classList.remove("target");
