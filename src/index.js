@@ -30,6 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalImage = document.getElementById("modal-image");
   const modalText = document.getElementById("modal-text");
   const modalPageNum = document.getElementById("modal-page-num")
+  let gif1 = document.getElementById("gif1")
+  let gif2 = document.getElementById("gif2")
+  let gif3 = document.getElementById("gif3")
   // Visualization control/wall button event listeners
   algoSelector.addEventListener("change", e => {
     selectedAlgorithm = e.target.value
@@ -122,8 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
   exitButton.addEventListener("click", closeModal)
 
   function openModal() {
-    modal.classList.remove("hide-modal");
-    modal.classList.add("show-modal");
+    modal.style.display = "flex";
     modalPage = 1;
     updateModal();
   }
@@ -147,18 +149,37 @@ document.addEventListener("DOMContentLoaded", () => {
       case 1:
         backButton.classList.add("hide-button");
         nextButton.classList.remove("hide-button");
+
+        gif1.style.display = "block";
+        gif2.style.display = "none";
+        gif3.style.display = "none";
+        gif4.style.display = "none";
+
         modalTitle.innerHTML = "Pick an algorithm and speed";
+        modalText.innerHTML = "Welcome to PathNavigator! Let's get started by selecting an algorithm and visualization speed from the dropdown menus at the bottom of the page (Fast is selected by default).";
         modalPageNum.innerHTML = "1/3"
         break;
       case 2:
         backButton.classList.remove("hide-button");
         nextButton.classList.remove("hide-button");
+
+        gif1.style.display = "none";
+        gif2.style.display = "block";
+        gif3.style.display = "block";
+        gif4.style.display = "none";
+
         modalTitle.innerHTML = "Draw or randomly generate walls";
+        modalText.innerHTML = "You can click or drag over blank tiles to place walls for the search algorithm to avoid. Alternatively, you can use the 'randomize' button to generate random walls."
         modalPageNum.innerHTML = "2/3"
         break;
       case 3:
         modalTitle.innerHTML = "Visualize the search algorithm";
         
+        gif1.style.display = "none";
+        gif2.style.display = "none";
+        gif3.style.display = "none";
+        gif4.style.display = "block";
+
         nextButton.classList.add("hide-button");
         modalPageNum.innerHTML = "3/3"
         break;
@@ -167,8 +188,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   
   function closeModal() {
-    modal.classList.remove("show-modal");
-    modal.classList.add("hide-modal");
+    // modal.classList.remove("show-modal");
+    modal.style.display = "none";
   }
   
   // Show page one of modal when page first loads
