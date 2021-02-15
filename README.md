@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="src/images/pathnavigator_logo.png" alt="PathNavigator Logo" width="1000" style="vertical-align:middle">
+  <img src="src/images/pathnavigator_logo.png" alt="PathNavigator Logo" width="500" style="vertical-align:middle">
 </div>
 
 ## Background and Overview
