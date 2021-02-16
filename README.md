@@ -3,7 +3,7 @@
 </div>
 
 ## Background and Overview
-[**PathNavigator**](https://pramirez23.github.io/PathNavigator/) is a pathfinding algorithm visualizer that uses **BFS and DFS** *(A* and Dijkstra's algorithm coming soon!)* to find the shortest path between nodes in a graph. It was built to help people more easily see and understand the steps that different pathfinding algorithms take to find a target.
+[**PathNavigator**](https://pramirez23.github.io/PathNavigator/) is a pathfinding algorithm visualizer that uses **BFS and DFS** *(A\* and Dijkstra's algorithm coming soon!)* to find the shortest path between nodes in a graph. It was built to help people more easily see and understand the steps that different pathfinding algorithms take to find a target.
 
 ## Technologies
 - JavaScript
