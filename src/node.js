@@ -4,6 +4,7 @@ export default class Node {
     this.grid = board.grid;
     this.pos = pos;
     this.type = type;
+    this.weight = Infinity;
     this.parent = null;
     this.children = [];
     this.searched = []; // Keeps track of searched tiles starting at root node

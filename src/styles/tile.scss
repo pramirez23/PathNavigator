@@ -40,6 +40,10 @@
   animation: 0.75s ease both placeWall;
 }
 
+.weight {
+  animation: 0.75s ease both placeWeight;
+}
+
 @keyframes searchTile {
   from {
     background-color: rgb(19, 105, 255);
@@ -75,5 +79,15 @@
 
   to {
     background: #393E46;
+  }
+}
+
+@keyframes placeWeight {
+  from {
+    background: #fda1a1;
+  }
+
+  to {
+    background: #ff0c0c;
   }
 }

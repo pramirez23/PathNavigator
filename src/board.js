@@ -8,6 +8,7 @@ export default class Board {
     this.generateGrid();
     this.validMove = this.validMove.bind(this);
     this.algorithmStarted = false;
+    this.selectedAlgorithm = null;
     this.speed = 5;
     this.draggedTileType = null; // Keep track of what type of tile is being dragged
     

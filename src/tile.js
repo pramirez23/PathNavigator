@@ -23,6 +23,7 @@ export default class Tile {
     const handleClick = e => {
       e.preventDefault();
       if (board.algorithmStarted) return;
+
       board.root.reset();
       let tilePos = e.target.id.split("-");
       let x = tilePos[0];
@@ -30,12 +31,32 @@ export default class Tile {
       let tile = board.grid[x][y];
       if (["root", "target"].includes(tile.node.type)) return;
 
-      if (tile.node.type === null) {
+      if (e.shiftKey && this.board.selectedAlgorithm === "dijkstra") {
+        if (tile.node.type === "weight") {
+          tile.tileEle.classList.remove("wall");
+          tile.tileEle.classList.remove("weight");
+          tile.node.type = null;
+          tile.node.weight = Infinity;
+          return;
+        } else if (tile.node.type === "wall" || tile.node.type == null) {
+          tile.tileEle.classList.remove("wall");
+          tile.tileEle.classList.add("weight");
+          tile.node.type = "weight";
+          tile.node.weight = 15;
+          return;
+        }
+      }
+
+      if (tile.node.type === null || tile.node.type === "weight") {
+        tile.tileEle.classList.remove("weight");
         tile.tileEle.classList.add("wall");
         tile.node.type = "wall";
+        tile.node.weight = Infinity;
       } else {
         tile.tileEle.classList.remove("wall");
+        tile.tileEle.classList.remove("weight");
         tile.node.type = null;
+        tile.node.weight = Infinity;
       }
     }
     
@@ -90,23 +111,44 @@ export default class Tile {
       let y = tilePos[1];
       let tile = board.grid[x][y];
 
+      if (e.shiftKey && this.board.selectedAlgorithm === "dijkstra") {
+        if (tile.node.type === "weight") {
+          tile.tileEle.classList.remove("wall");
+          tile.tileEle.classList.remove("weight");
+          tile.node.type = null;
+          tile.node.weight = Infinity;
+          return;
+        } else if (tile.node.type === "wall" || tile.node.type == null) {
+          tile.tileEle.classList.remove("wall");
+          tile.tileEle.classList.add("weight");
+          tile.node.type = "weight";
+          tile.node.weight = 15;
+          return;
+        }
+      }
+
       if (tile.node.type === "wall") {
+        tile.tileEle.classList.remove("wall");
+        tile.tileEle.classList.remove("weight");
         tile.node.type = null;
-        e.target.classList.remove("wall");
-      } else if (tile.node.type === null) {
+        tile.node.weight = Infinity;
+      } else if (tile.node.type === null || tile.node.type === "weight") {
+        tile.tileEle.classList.remove("weight");
+        tile.tileEle.classList.add("wall");
         tile.node.type = "wall";
-        e.target.classList.add("wall");
+        tile.node.weight = Infinity;
       }
     }
     
     const handleDrop = e => {
       e.preventDefault();
-      let invalidDropPos = [board.root.pos, board.target.pos]
+      let invalidDropPos = [board.root.pos, board.target.pos];
+      let invalidDropTypes = ["wall", "weight"];
       let tileDropPos = e.target.id.split("-").map(num => parseInt(num));
       let x = tileDropPos[0];
       let y = tileDropPos[1];
 
-      if (invalidDropPos.includes(tileDropPos) || (board.grid[x][y].node.type === "wall")) {
+      if (invalidDropPos.includes(tileDropPos) || (invalidDropTypes.includes(board.grid[x][y].node.type))) {
         board.root.tile.classList.remove("hide");
         board.target.tile.classList.remove("hide");
         return;

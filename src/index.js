@@ -33,20 +33,43 @@ document.addEventListener("DOMContentLoaded", () => {
   let gif1 = document.getElementById("gif1")
   let gif2 = document.getElementById("gif2")
   let gif3 = document.getElementById("gif3")
+
+  // Remove weighted walls (only used if selected algorithm is not Dijkstra's)
+  function removeWeights() {
+    let weights = document.getElementsByClassName("weight");
+
+    Array.from(weights).forEach(weight => {
+      let tilePos = weight.id.split("-");
+      let x = tilePos[0];
+      let y = tilePos[1];
+      let tile = board.grid[x][y];
+
+      tile.tileEle.classList.remove("weight");
+      tile.node.type = null;
+      tile.node.weight = Infinity;
+    });
+  }
+
+
   // Visualization control/wall button event listeners
   algoSelector.addEventListener("change", e => {
     selectedAlgorithm = e.target.value
 
     switch (selectedAlgorithm) {
       case "bfs":
+        removeWeights();
+        board.selectedAlgorithm = "bfs";
         algoTitle.innerHTML = "Breadth-First Search (BFS)"
         algoInfo.innerHTML = "An unweighted pathfinding algorithm that explores all of the root node's direct neighbors before moving onto the next level of neighbors. BFS uses a queue data structure (first in, first out) to evaluate nodes. This approach guarantees discovery of the shortest path to the target node."
         break;
       case "dfs":
+        removeWeights();
+        board.selectedAlgorithm = "dfs";
         algoTitle.innerHTML = "Depth-First Search (DFS)"
         algoInfo.innerHTML = "An unweighted pathfinding algorithm that picks one of the root node's direct neighbors and explores as far down the tree as possible before searching the next neighbor and repeating the same process. DFS uses a stack data structure (last in, first out). This approach won’t guarantee the shortest path, but can use less memory than BFS and is better suited for far away targets."
         break;
       case "dijkstra":
+        board.selectedAlgorithm = "dijkstra";
         algoTitle.innerHTML = "Dijkstra's Algorithm"
         algoInfo.innerHTML = "Coming soon!"
         break;
