@@ -27,6 +27,7 @@ export default class Board {
           let root = new Tile(this, [13, 9], "root");
           root.tileEle.classList.add("root")
           root.tileEle.setAttribute("draggable", "true")
+          root.node.weight = 0;
           this.root = root.node;
           this.grid[r].push(root);
 
@@ -93,6 +94,7 @@ export default class Board {
       for (const tile of row) {
         if (!["root", "target"].includes(tile.node.type)) {
           tile.node.type = null;
+          tile.node.weight = Infinity;
           document.getElementById(`${tile.pos.join("-")}`).classList.remove("wall");
         }
       }
@@ -110,6 +112,7 @@ export default class Board {
     this.root.tile.classList.remove("root");
 
     this.root = this.grid[x][y].node;
+    this.root.weight = 0;
     this.root.type = "root";
     this.root.tile.classList.add("root");
   }

@@ -133,6 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function clear() {
     board.clearWalls();
+    removeWeights();
     reset();
   }
 
