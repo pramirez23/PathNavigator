@@ -41,7 +41,13 @@
 }
 
 .weight {
-  animation: 0.75s ease both placeWeight;
+  // animation: 0.75s ease both placeWeight;
+  background: url("../images/weight.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
+  background-blend-mode: multiply;
+  transition: opacity 0.75s ease-in-out;
 }
 
 @keyframes searchTile {
@@ -79,15 +85,5 @@
 
   to {
     background: #393E46;
-  }
-}
-
-@keyframes placeWeight {
-  from {
-    background: #fda1a1;
-  }
-
-  to {
-    background: #ff0c0c;
   }
 }

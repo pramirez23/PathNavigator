@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
       case "dijkstra":
         board.selectedAlgorithm = "dijkstra";
         algoTitle.innerHTML = "Dijkstra's Algorithm"
-        algoInfo.innerHTML = "Coming soon!"
+        algoInfo.innerHTML = "<i>(Hold SHIFT and click/drag to place weighted walls)</i> <br></br> A weighted pathfinding algorithm that guarantees the shortest path from a source node to all other nodes in a graph with a shortest-path tree. It explores every neighbor and calculates their distance to the source node. Weighted walls have a higher cost (distance) to navigate through (think of them like high-traffic roads on a GPS), and are prioritized less when finding the shortest possible path with Dijkstra's algorithm."
         break;
     } 
   });
@@ -117,11 +117,10 @@ document.addEventListener("DOMContentLoaded", () => {
         root.generateTree();
         root.dfs();
         break;
-      // case "dijkstra":
-      //   board.algorithmStarted = true;
-      //   root.generateTree();
-      //   root.dijkstra();
-      //   break;
+      case "dijkstra":
+        board.algorithmStarted = true;
+        root.dijkstra();
+        break;
       default:
         alert("Don't forget to pick an algorithm!")
     }
@@ -163,11 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
     modalPage--
     updateModal();
   }
-
-  // const modalTitle
-  // const modalImage
-  // const modalText
-  // const modalPageNum
   
   function updateModal() {
     switch(modalPage) {
@@ -198,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gif4.style.display = "none";
         gif5.style.display = "none";
 
-        modalText.innerHTML = "You can click or drag over blank tiles to place walls for the search algorithm to avoid. <br/> <br/> Alternatively, you can use the <b>RANDOMIZE</b> button to generate random walls.* <br/> <br/> <i>*Pro tip: Use the <b>CLEAR</b> button to clear all of the walls on the board.</i>" 
+        modalText.innerHTML = "You can click or drag over blank tiles to place walls for the search algorithm to avoid. <br/> <br/> When using Dijkstra's Algorithm, hold down SHIFT while clicking and dragging to place weighted walls. <br/> <br/> Alternatively, you can use the <b>RANDOMIZE</b> button to generate random walls.* <br/> <br/> <i>*Pro tip: Use the <b>CLEAR</b> button to clear all of the walls on the board.</i>" 
         modalPageNum.innerHTML = "2/4"
         break;
       case 3:

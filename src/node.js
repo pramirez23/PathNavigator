@@ -8,6 +8,8 @@ export default class Node {
     this.parent = null;
     this.children = [];
     this.searched = []; // Keeps track of searched tiles starting at root node
+    this.isVisited = false; // Keeps track of node being visited or not for Dijkstra's algorithm
+    this.previousNode = null; // Pointer to previously visited node for Dijkstra's algorithm
     this.tile = document.getElementById(`${pos[0]}-${pos[1]}`);
     this.visualizeSearch.bind(this);
     this.visualizePath.bind(this);
@@ -25,6 +27,8 @@ export default class Node {
       for (const tile of row) {
         tile.node.parent = null;
         tile.node.children = new Array();
+        tile.node.weight = Infinity;
+        tile.node.isVisited = false;
         document.getElementById(`${tile.pos.join("-")}`).classList.remove("searched")
         document.getElementById(`${tile.pos.join("-")}`).classList.remove("path")
       }
@@ -83,7 +87,7 @@ export default class Node {
     }
 
     if (!!node) {
-      this.parent = node;
+      this.parent = node;      
       node.children.push(this)
     }
   }
@@ -126,6 +130,82 @@ export default class Node {
     alert("Uh oh! It looks like you blocked all possible paths to the target node. Remove some walls and try again!")
   }
   
+  dijkstra() {
+    const visited = this.searched;
+    const unvisited = this.fetchAllNodes(this.grid);
+    this.board.root.weight = 0;
+
+    while (unvisited.length > 0) {
+      // Sort nodes by weight
+      unvisited.sort((a, b) => a.node.weight - b.node.weight);
+      const nextNode = unvisited.shift().node;
+
+      if (nextNode.type === "wall") continue;
+
+      if (nextNode.weight === Infinity) {
+        alert("Uh oh! It looks like you blocked all possible paths to the target node. Remove some walls and try again!")
+        this.board.algorithmStarted = false;
+        return;
+      }
+
+      nextNode.isVisited = true;
+
+      if (nextNode.type === "target") {
+        let path = this.tracePath();
+        this.visualizeSearch(this.board.root, this.board.grid, path, this.board.speed);
+        return;
+      } else if (!["root", "target"].includes(nextNode.type)) {
+        visited.push(nextNode.pos);
+      }
+
+      this.updateUnvisitedChildren(nextNode); 
+    }
+  }
+
+  fetchAllNodes(grid) {
+    const nodes = []
+    for (const row of grid) {
+      for (const node of row) {
+        nodes.push(node);
+      }
+    }
+    return nodes;
+  }
+
+  fetchUnvisitedChildren(node) {
+    // Used for Dijkstra's algorithm
+    const children = [];
+
+    Node.MOVES.forEach(move => {
+      let dx = move[0];
+      let dy = move[1];
+
+      let nextPos = [node.pos[0] + dx, node.pos[1] + dy];
+      let nextPosX = nextPos[0];
+      let nextPosY = nextPos[1];
+
+      if (node.board.validMove(nextPos)) {
+        let neighbor = this.grid[nextPosX][nextPosY].node;
+        children.push(neighbor);
+      }
+    })
+
+    return children.filter(child => !child.isVisited);
+  }
+
+  updateUnvisitedChildren(node) {
+    // Used for Dijkstra's algorithm
+    const children = this.fetchUnvisitedChildren(node);
+    for (const child of children) {
+      if (child.type === "weight") {
+        child.weight = node.weight + 20;
+      } else {
+        child.weight = node.weight + 1;
+      }
+      child.addParent(node);
+    }
+  }
+
   visualizeSearch(root, grid, path, speed) {
     if (root.searched.length === 0) {
       this.visualizePath(root, grid, path);
