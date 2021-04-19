@@ -42,7 +42,6 @@ export default class Tile {
           tile.tileEle.classList.remove("wall");
           tile.tileEle.classList.add("weight");
           tile.node.type = "weight";
-          tile.node.weight = 15;
           return;
         }
       }
@@ -122,7 +121,6 @@ export default class Tile {
           tile.tileEle.classList.remove("wall");
           tile.tileEle.classList.add("weight");
           tile.node.type = "weight";
-          tile.node.weight = 15;
           return;
         }
       }
